@@ -1,0 +1,168 @@
+/* ============================================
+   ANIMACIONES GLOBALES (CORREGIDAS)
+   ============================================ */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pageEnter {
+    from { opacity: 0; }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-page { animation: pageEnter 0.5s ease-in-out; }
+/* ============================================
+   ANIMACIONES Y TRANSICIONES MEJORADAS
+   ============================================ */
+
+/* Animación para el grid de ofertas */
+.grid {
+    animation: fadeIn 0.8s ease-out;
+}
+
+.card {
+    animation: slideInUp 0.6s ease-out;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.5s; }
+.card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Mejoras adicionales para cards */
+.img-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.img-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(230, 34, 34, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .img-container::after {
+    opacity: 1;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+img {
+    transition: transform 0.3s ease;
+}
+
+/* Badge mejorado */
+.badge {
+    display: inline-block;
+    background: var(--accent-red);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Mejoras en buttons */
+.btn-primary, .btn-secondary {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-primary::before, .btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.3s ease;
+}
+
+.btn-primary:hover::before, .btn-secondary:hover::before {
+    left: 100%;
+}
+
+/* ============================================
+   ANIMACIONES DE TRANSICIÓN
+   ============================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+}@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes pageLoadFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+fade-in-enter {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.fade-out-exit {
+    animation: fadeOutDown 0.4s ease-in;
+}
+
+body.page-transition {
+    animation: fadeOut 0.3s ease-out;
+}
+
+body.page-enter {
+    animation: fadeIn 0.4s ease-in;
+    }

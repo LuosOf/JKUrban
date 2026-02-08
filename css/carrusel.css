@@ -1,0 +1,263 @@
+* /*============================================
+   SECCIÓN DESTACADOS: CUADRO BLANCO CONTENEDOR
+   ============================================ */
+.container.destacados-boxed-section {
+    background-color: #ffffff; /* <--- CUADRO BLANCO GRANDE */
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    margin: 4rem auto;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); /* Sombra para que flote */
+    max-width: 1300px;
+    width: 95%;
+    position: relative;
+}
+
+.destacados-boxed-section .section-title {
+    margin-bottom: 2.5rem;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+/* ============================================
+   CARRUSEL INTERNO
+   ============================================ */
+.carousel-container.destacados-wrapper {
+    position: relative;
+    padding: 0 50px; /* Espacio para flechas */
+}
+
+.carousel-window {
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    gap: 0; /* Sin gap extra, usamos padding en items */
+}
+
+/* ============================================
+   TARJETAS DE PRODUCTO (ITEM)
+   ============================================ */
+.carousel-item {
+    min-width: 20%; /* 5 productos por fila (100% / 5) */
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    background: transparent; /* Fondo transparente para que se vea el blanco del contenedor padre */
+    border: none;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.carousel-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Imagen del producto */
+.carousel-img-container {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    background: #f9f9f9; /* <--- FONDO GRIS SUAVE DETRÁS DE LA ZAPATILLA */
+    border-radius: 12px; /* Bordes redondeados en la imagen */
+}
+
+.carousel-img-container img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
+
+/* Textos */
+.tag-bestseller {
+    color: #2a8a5a; /* Verde */
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.carousel-item h3 {
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 5px 0;
+    line-height: 1.2;
+    height: 38px;
+    overflow: hidden;
+    color: #000;
+}
+
+.carousel-price {
+    font-size: 1.1rem;
+    color: #e62222; /* Rojo acento (o el color que prefieras) */
+    font-weight: 900;
+    display: block;
+    margin-top: 5px;
+}
+
+/* ============================================
+   BOTONES Y FLECHAS
+   ============================================ */
+
+/* Flechas de navegación */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    background: #000; /* Negras para contraste */
+    border: none;
+    color: #fff;
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.carousel-btn:hover {
+    background: #333;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev { left: 0; }
+.carousel-btn.next { right: 0; }
+
+/* Botón Ver Catálogo */
+.catalog-btn-wrapper {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.btn-ver-catalogo {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    padding: 15px 50px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-decoration: none;
+}
+
+.btn-ver-catalogo:hover {
+    background-color: #333;
+    transform: translateY(-3px);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+    .carousel-item { min-width: 33.33%; } /* 3 por fila */
+}
+
+@media (max-width: 600px) {
+    .container.destacados-boxed-section { padding: 2rem 1rem; width: 95%; }
+    .carousel-item { min-width: 100%; } /* 1 por fila */
+    .carousel-container.destacados-wrapper { padding: 0 30px; }
+}
+/* ============================================
+   SECCIÓN OFERTAS ESPECIALES (GRID DE 4)
+   ============================================ */
+
+/* Configuración de la cuadrícula */
+#offers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 Columnas exactas */
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+/* Estilo de la Tarjeta de Oferta (Igual a Destacados) */
+.offer-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 20px 10px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    position: relative; /* Para la etiqueta de descuento */
+}
+
+.offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Reutilizamos estilos de texto de destacados */
+.offer-card h3 {
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #000;
+    line-height: 1.3;
+    margin-bottom: 10px;
+    height: 38px;
+    overflow: hidden;
+}
+
+/* Contenedor de precios (Viejo vs Nuevo) */
+.prices-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Etiqueta de descuento roja flotante */
+.offer-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #e62222;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 4px;
+    z-index: 5;
+}
+
+/* Responsive para Ofertas */
+@media (max-width: 1024px) {
+    #offers-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+    }
+}
+
+@media (max-width: 600px) {
+    #offers-grid {
+        grid-template-columns: 1fr; /* 1 columna en celular */
+    }
+}

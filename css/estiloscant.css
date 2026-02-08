@@ -1,0 +1,101 @@
+/* ============================================
+   ESTILOS DE CONTROLES DE CANTIDAD (MEJORADO)
+   ============================================ */
+
+/* Contenedor que agrupa el stepper y el botón eliminar */
+.qty-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Alinea todo a la derecha */
+    gap: 8px;
+}
+
+/* El "Stepper": Caja con bordes redondeados que contiene [- 1 +] */
+.qty-stepper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px; /* Bordes suaves */
+    background: #fff;
+    overflow: hidden; /* Para que los botones no se salgan */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03); /* Sutil sombra */
+}
+
+/* Los botones de - y + */
+.qty-btn {
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #555;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qty-btn:hover {
+    background: #f2f2f2;
+    color: #000;
+}
+
+.qty-btn:active {
+    background: #e0e0e0;
+}
+
+/* El número en el centro */
+.qty-input {
+    width: 40px;
+    height: 32px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0;
+    font-weight: 700;
+    color: #333;
+    background: #fff;
+    outline: none;
+    font-size: 0.95rem;
+    
+    /* 1. Propiedad estándar (quita la advertencia en algunos editores) */
+    appearance: textfield; 
+    
+    /* 2. Específico para Firefox (necesario aunque salga advertencia amarilla) */
+    -moz-appearance: textfield;
+}
+
+/* 3. Específico para Chrome, Safari y Edge (Webkit) */
+/* Esto es OBLIGATORIO para quitar las flechas en estos navegadores */
+.qty-input::-webkit-inner-spin-button, 
+.qty-input::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+/* Botón Eliminar más estético */
+.btn-remove {
+    font-size: 0.8rem;
+    color: #e62222; /* Rojo acento */
+    text-decoration: none;
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.btn-remove:hover {
+    background: #fff5f5;
+    border-color: #ffe0e0;
+}
+
+.btn-remove i {
+    font-size: 0.9rem;
+}

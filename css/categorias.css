@@ -1,0 +1,201 @@
+
+
+/* ============================================
+   CATEGORÍAS MEJORADAS
+   ============================================ */
+.container {
+    background: transparent; 
+}
+
+/* Las tarjetas sí deben ser blancas para resaltar sobre el gris */
+.category-card {
+    background: #ffffff; /* Tarjeta blanca */
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    padding-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.category-card {
+    text-align: center;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+    transform: translateY(0);
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.category-img {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.category-img::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.3s ease;
+}
+
+.category-card:hover .category-img::after {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.category-card h3 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    padding: 1.5rem 1rem 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.category-card p {
+    color: #777;
+    padding: 0 1rem 1.5rem;
+}
+
+.btn-category {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    padding: 12px 30px;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-category:hover {
+    background: var(--accent-red);
+    transform: translateX(3px);
+}
+
+/* ============================================
+   CORRECCIÓN VISUAL: OFERTAS (ELIMINAR DOBLE CAJA)
+   ============================================ */
+
+/* 1. Quitar la sombra y el fondo a las tarjetas de oferta para que se integren */
+#offers-grid > div, 
+.offer-card {
+    box-shadow: none !important;       /* QUITA LA SOMBRA FEA */
+    background-color: transparent !important; /* Fondo transparente para integrarse */
+    border: 1px solid #f0f0f0 !important;     /* Borde muy suave y fino */
+    padding: 20px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+/* 2. Efecto solo cuando pasas el mouse (Hover) */
+#offers-grid > div:hover,
+.offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important; /* Aquí SI aparece sombra */
+    background-color: #ffffff !important;
+    border-color: transparent !important;
+}
+
+/* 3. Asegurar que la imagen no tenga fondo gris extra */
+#offers-grid .carousel-img-container,
+.offer-card .img-container {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    height: 200px; /* Altura fija para que se vean alineados */
+    margin-bottom: 15px;
+}
+
+/* 4. Ajustar el precio antiguo para que se vea bien */
+.old-price {
+    color: #aaa;
+    font-size: 0.9rem;
+    text-decoration: line-through;
+    margin-right: 10px;
+}
+
+/* 5. Ajustar el precio nuevo */
+.carousel-price, .offer-card .price {
+    color: #e62222; /* Rojo oferta */
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+/* ============================================
+   SECCIÓN CATEGORÍAS: ANCHO COMPLETO Y GRIS
+   ============================================ */
+
+.category-full-width {
+    width: 100%;             /* Ocupa todo el ancho de la pantalla */
+    background-color: #000000d1; /* Color GRIS del cuadro exterior */
+    padding: 4rem 0;         /* Espacio arriba y abajo */
+    margin: 4rem 0;          /* Separación de otras secciones */
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.05); /* Sombra interna sutil (opcional) */
+}
+
+/* Contenedor interno para que las tarjetas no se peguen a los bordes de la pantalla */
+.category-full-width .inner-container {
+    max-width: 1400px;       /* Ancho máximo del contenido */
+    margin: 0 auto;          /* Centrado */
+    padding: 0 5%;           /* Margen lateral */
+}
+
+/* Ajuste del título dentro de la franja gris */
+.category-full-width .section-title {
+    margin-bottom: 3rem;
+    color: #ffffff;             /* Aseguramos que el título sea negro */
+}
+/* ============================================
+   AJUSTE DE IMÁGENES EN CATEGORÍAS
+   ============================================ */
+
+/* Contenedor de la imagen */
+.category-card .category-img {
+    width: 100%;
+    height: 300px; /* Altura fija para que todas se vean iguales */
+    overflow: hidden; /* Oculta lo que se salga al hacer zoom */
+    border-radius: 12px 12px 0 0; /* Redondeado solo arriba si prefieres */
+    padding: 0;      /* Quitamos el padding que tenía el icono */
+    background: transparent; /* Quitamos el gradiente anterior */
+    display: block;  /* Aseguramos comportamiento de bloque */
+}
+
+/* La imagen en sí */
+.category-card .category-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* CLAVE: Recorta la imagen para llenar el espacio sin estirarse */
+    transition: transform 0.5s ease; /* Suavidad para el zoom */
+}
+
+/* Efecto Zoom al pasar el mouse sobre la tarjeta */
+.category-card:hover .category-img img {
+    transform: scale(1.1); /* La imagen crece un 10% */
+}
+/* ============================================
+   FIN CATEGORÍAS MEJORADAS
+   ============================================ */

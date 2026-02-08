@@ -1,0 +1,455 @@
+
+/* ============================================
+   RESPONSIVE MEJORADO
+   ============================================ */
+@media (max-width: 768px) {
+    header {
+        flex-wrap: wrap;
+    }
+
+    nav {
+        order: 3;
+        flex-basis: 100%;
+        margin-top: 1rem;
+        gap: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .hero {
+        height: 60vh;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    /* Carrusel responsivo */
+    .carousel-item {
+        padding: 1.5rem 1rem;
+    }
+
+    .carousel-item img {
+        max-width: 250px;
+        height: 220px;
+    }
+
+    .carousel-item h3 {
+        font-size: 1.1rem;
+    }
+
+    .carousel-controls {
+        gap: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+
+    /* Categorías responsivo */
+    .categories-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .category-img {
+        height: 180px;
+        font-size: 3rem;
+    }
+
+    /* Sobre la tienda responsivo */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-text h2 {
+        font-size: 1.8rem;
+    }
+
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer responsivo */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Carrito responsivo */
+    .cart-container {
+        grid-template-columns: 1fr;
+    }
+
+    #cart-summary {
+        position: static;
+    }
+
+    .cart-item {
+        grid-template-columns: 100px 1fr 50px;
+    }
+
+    .cart-item-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .whatsapp-modal {
+        width: calc(100% - 30px);
+        height: 70vh;
+    }
+
+    /* Producto Detail responsivo */
+    .product-detail {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .product-detail-img img {
+        max-width: 100%;
+    }
+
+    .btn-detail-add {
+        width: 100%;
+    }
+
+    /* Responsive para página de productos */
+    .search-bar-container {
+        padding: 1rem 5%;
+    }
+
+    .search-wrapper {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .search-input,
+    .search-btn {
+        border-radius: 8px;
+        width: 100%;
+    }
+
+    .search-input {
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+    }
+
+    .search-btn {
+        border-radius: 8px;
+    }
+
+    .products-page {
+        grid-template-columns: 1fr;
+        padding: 2rem 5%;
+    }
+
+    .filters-sidebar {
+        position: relative;
+        top: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        padding: 1.5rem;
+    }
+
+    .filter-group {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .products-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .product-count {
+        font-size: 0.85rem;
+    }
+}
+/* Títulos con estilo Golden Store */
+.detail-page-title, .related-products h2, .size-guide-section h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 4rem 0 2rem;
+    letter-spacing: 1px;
+}
+
+/* Grid de Detalle */
+.product-detail {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.main-img {
+    background: #fff;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+}
+
+.main-img img { max-width: 100%; height: auto; transition: 0.3s; }
+
+/* Info del Producto */
+.tag-alternativo {
+    color: #2a8a5a;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.detail-price {
+    font-size: 2.8rem;
+    color: var(--accent-red);
+    font-weight: 900;
+    margin: 1rem 0;
+}
+
+.product-features-list {
+    margin: 1.5rem 0;
+    list-style: none;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.product-features-list li { margin-bottom: 0.5rem; }
+
+/* Botón de WhatsApp Estilo Golden */
+.btn-whatsapp-order {
+    background: #25d366;
+    color: white;
+    width: 100%;
+    padding: 1.2rem;
+    border-radius: 8px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    transition: 0.3s;
+}
+
+.btn-whatsapp-order:hover { background: #1eb954; transform: scale(1.02); }
+
+/* Guía de Tallas */
+.guide-container {
+    display: flex;
+    gap: 2rem;
+    background: #fdfdfd;
+    padding: 2rem;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    align-items: center;
+}
+
+.size-table { width: 100%; border-collapse: collapse; text-align: center; }
+.size-table th { background: #f4f4f4; padding: 12px; font-weight: 900; border: 1px solid #ddd; }
+.size-table td { padding: 12px; border: 1px solid #ddd; }
+
+/* Grid Relacionados (3 columnas como pediste) */
+.products-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 992px) {
+    .product-detail, .guide-container, .products-grid-3 { grid-template-columns: 1fr; }
+}
+/* Layout Principal Detalle */
+.product-main-flex {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    background: #fff;
+    margin-bottom: 60px;
+}
+
+.product-visuals { flex: 1; }
+.product-info-panel { flex: 1; }
+
+.main-image-display {
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-image-display img { width: 100%; max-width: 500px; height: auto; }
+
+/* Estilo de Texto Golden Store */
+.tag-alt { color: #2a8a5a; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+.product-info-panel h1 { font-size: 2.2rem; font-weight: 800; text-transform: uppercase; margin: 10px 0; }
+.detail-price { font-size: 2.5rem; color: #e62222; font-weight: 900; margin: 10px 0; }
+
+.benefit-list { list-style: none; margin: 20px 0; font-size: 0.95rem; line-height: 1.8; color: #444; }
+.benefit-list li::before { content: "• "; color: #000; font-weight: bold; }
+
+/* Selector de Tallas */
+.size-selector-box { margin: 25px 0; }
+.size-options { display: flex; gap: 8px; margin-top: 10px; }
+.size-options button {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Botones de Acción */
+.btn-cart-main {
+    width: 100%;
+    background: #ccc; /* Color plomo como en la imagen antes de seleccionar */
+    color: #fff;
+    padding: 18px;
+    border: none;
+    font-weight: 900;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.btn-whatsapp-direct {
+    width: 100%;
+    background: #25d366;
+    color: #fff;
+    padding: 18px;
+    border: none;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+/* Tabla de Tallas */
+.golden-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+.golden-table th { background: #f9f9f9; padding: 15px; border: 1px solid #eee; font-size: 0.75rem; }
+.golden-table td { padding: 15px; border: 1px solid #eee; text-align: center; font-size: 0.85rem; }
+
+/* Grid Relacionados */
+.products-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+
+@media (max-width: 850px) {
+    .product-main-flex { flex-direction: column; }
+}
+/* ============================================
+   ESTILOS DE CUPÓN Y ACCIONES (PREMIUM)
+   ============================================ */
+
+.cart-actions-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 0;
+    margin-top: 10px;
+    border-top: 1px solid #eee;
+    flex-wrap: wrap; /* Para móviles */
+    gap: 15px;
+}
+
+/* Grupo del Cupón (Input + Botón) */
+.coupon-group {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    max-width: 450px;
+}
+
+.coupon-group input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px; /* Bordes sutilmente redondeados */
+    font-size: 0.95rem;
+    outline: none;
+    transition: 0.3s;
+    background: #f9f9f9;
+}
+
+.coupon-group input:focus {
+    border-color: #000;
+    background: #fff;
+}
+
+.btn-coupon {
+    padding: 12px 20px;
+    background: #000;
+    color: #fff;
+    border: 1px solid #000;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.btn-coupon:hover {
+    background: #333;
+    border-color: #333;
+}
+
+/* Botón Actualizar (Lado derecho) */
+.btn-update-cart {
+    padding: 12px 20px;
+    background: transparent;
+    color: #555;
+    border: 1px solid #ddd;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.btn-update-cart:hover {
+    border-color: #000;
+    color: #000;
+}
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+    .cart-actions-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .coupon-group {
+        max-width: 100%;
+    }
+    
+    .btn-update-cart {
+        width: 100%;
+        text-align: center;
+    }
+}

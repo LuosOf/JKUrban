@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto - JK URBAN Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/animaciones.css">
+    <link rel="stylesheet" href="css/Carrito.css">
+    <link rel="stylesheet" href="css/carrusel.css">
+    <link rel="stylesheet" href="css/categorias.css">
+    <link rel="stylesheet" href="css/contenedor.css">
+    <link rel="stylesheet" href="css/detalle.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/Grid.css">
+    <link rel="stylesheet" href="css/Hero.css">
+    <link rel="stylesheet" href="css/Layout.css">
+    <link rel="stylesheet" href="css/Marcas.css">
+    <link rel="stylesheet" href="css/Navbar.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/tienda.css">
+    <link rel="stylesheet" href="css/whatsapp.css">
+    <link rel="stylesheet" href="script.js">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body class="fade-page">
+<div class="top-bar">
+    <div class="top-bar-container">
+        
+        <div class="top-social">
+            <a href="https://www.facebook.com/profile.php?id=61587292062292"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+
+        <div class="top-promo">
+            APROVECHA LOS PRECIOS ESPECIALES EN ZAPATILLAS 
+        </div>
+
+        <div class="top-contact">
+            <a href="https://wa.me/51945105822" target="_blank">
+                <i class="fab fa-whatsapp"></i> +51 945 105 822
+            </a>
+        </div>
+
+    </div>
+</div>
+<header>
+    <div class="header-top">
+        <a href="index.html" class="logo">JK URBAN</a>
+        <nav class="navbar">
+            <a href="productos.html?gender=hombres" class="nav-link">HOMBRES</a>
+            <a href="productos.html?gender=mujeres" class="nav-link">MUJERES</a>
+            <a href="productos.html?gender=niños" class="nav-link">NIÑOS</a>
+            <a href="productos.html" class="nav-link">PRODUCTOS</a>
+        </nav>
+        <div class="icons">
+            <div class="search-icon"><i class="fas fa-search"></i></div>
+            <div class="cart-icon-container" onclick="irAlCarrito()">
+                <i class="fas fa-shopping-bag"></i>
+                <span id="cart-counter" class="cart-badge">0</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="product-detail-container">
+    <h1 class="detail-page-title">DETALLE DEL PRODUCTO</h1>
+
+    <div class="product-main-flex">
+        <div class="product-visuals">
+            <div id="main-img-container" class="main-image-display">
+                </div>
+            <div id="thumbnail-list" class="thumbnails-grid">
+                </div>
+        </div>
+
+        <div class="product-info-panel">
+            <div id="product-info-content">
+                </div>
+            
+            <div class="size-selector-box">
+                <span>Talla</span>
+                <div class="size-options">
+                    <button>40</button><button>41</button><button>42</button><button>43</button><button>44</button>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn-cart-main" onclick="addToCartFromDetail()">AÑADIR AL CARRITO</button>
+                <button class="btn-whatsapp-direct" onclick="enviarPedidoWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> PEDIR POR WHATSAPP
+                </button>
+            </div>
+            
+            <div class="trust-icons">
+                <p><i class="fas fa-truck"></i> Lo llevamos a la puerta de tu casa</p>
+                <p><i class="fas fa-shield-alt"></i> Seguridad y garantía de producto</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="size-guide-section">
+        <h2 class="section-subtitle">GUÍA DE TALLAS</h2>
+        <div class="guide-box">
+            <div class="guide-info-text">
+                <img src="http://goldenstoreperu.com/wp-content/uploads/2023/07/tallas-calzado-2022-1-removebg-preview.png.webp" alt="Guía pie">
+                <p>Para usar la tabla de equivalencias deberá medir el largo de su pie. Recomendamos elegir una talla mayor si no está seguro.</p>
+            </div>
+            <div class="table-responsive">
+                <table class="golden-table">
+                    <thead>
+                        <tr><th>USA</th><th>ADIDAS</th><th>PUMA</th><th>NIKE</th><th>PERÚ</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>7</td><td>24.6 cm</td><td>25 cm</td><td>24.5 cm</td><td>40</td></tr>
+                        <tr><td>8</td><td>25.5 cm</td><td>26 cm</td><td>25.4 cm</td><td>41</td></tr>
+                        <tr><td>9</td><td>26.3 cm</td><td>27 cm</td><td>26.2 cm</td><td>42</td></tr>
+                        <tr><td>10</td><td>27.1 cm</td><td>28 cm</td><td>27.1 cm</td><td>44</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="related-section">
+        <h2 class="section-subtitle">PRODUCTOS RELACIONADOS</h2>
+        <div id="related-grid" class="products-grid-3">
+            </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>JK URBAN</h4>
+            <p>Tu tienda de zapatillas premium en línea.</p>
+        </div>
+        <div class="footer-section">
+            <h4>CONTACTO</h4>
+            <p>📱 +51 941 819 132</p>
+            <p>📧 info@jkurban.com</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 JK URBAN. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

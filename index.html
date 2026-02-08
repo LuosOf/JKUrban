@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JK URBAN Store - Zapatillas Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/animaciones.css">
+    <link rel="stylesheet" href="css/Carrito.css">
+    <link rel="stylesheet" href="css/carrusel.css">
+    <link rel="stylesheet" href="css/categorias.css">
+    <link rel="stylesheet" href="css/contenedor.css">
+    <link rel="stylesheet" href="css/detalle.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/Grid.css">
+    <link rel="stylesheet" href="css/Hero.css">
+    <link rel="stylesheet" href="css/Layout.css">
+    <link rel="stylesheet" href="css/Marcas.css">
+    <link rel="stylesheet" href="css/Navbar.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/tienda.css">
+    <link rel="stylesheet" href="css/whatsapp.css">
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+<div class="top-bar">
+    <div class="top-bar-container">
+        
+        <div class="top-social">
+            <a href="https://www.facebook.com/profile.php?id=61587292062292"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+
+        <div class="top-promo">
+            APROVECHA LOS PRECIOS ESPECIALES EN ZAPATILLAS 
+        </div>
+
+        <div class="top-contact">
+            <a href="https://wa.me/+51945105822" target="_blank">
+                <i class="fab fa-whatsapp"></i> +51 945 105 822
+            </a>
+        </div>
+
+    </div>
+</div>
+<header>
+    <div class="header-top">
+        <a href="index.html" class="logo">JK URBAN</a>
+        <nav class="navbar">
+            <a href="productos.html?gender=hombres" class="nav-link">HOMBRES</a>
+            <a href="productos.html?gender=mujeres" class="nav-link">MUJERES</a>
+            <a href="productos.html?gender=niños" class="nav-link">NIÑOS</a>
+            <a href="productos.html" class="nav-link">PRODUCTOS</a>
+        </nav>
+        <div class="icons">
+            <div class="search-icon"><i class="fas fa-search"></i></div>
+            <div class="cart-icon-container" onclick="irAlCarrito()">
+                <i class="fas fa-shopping-bag"></i>
+                <span id="cart-counter" class="cart-badge">0</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <p class="badge">🔥 NUEVA COLECCIÓN</p>
+        <h1>ESTILO <br> URBANO</h1>
+        <p class="description">Colecciones exclusivas de las mejores marcas. Ediciones limitadas con estilo auténtico para dominar las calles.</p>
+        <div class="hero-btns">
+            <a href="productos.html" class="btn-primary">COMPRAR AHORA</a>
+            <a href="#ofertas" class="btn-secondary">VER OFERTAS</a>
+        </div>
+    </div>
+</section>
+
+<main class="container destacados-boxed-section" id="destacados">
+    <h2 class="section-title">LOS MÁS DESTACADOS</h2>
+    
+    <div class="carousel-container destacados-wrapper">
+        <button class="carousel-btn prev" onclick="moveCarousel(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <div class="carousel-window">
+            <div class="carousel-track" id="bestsellers-grid">
+                </div>
+        </div>
+        
+        <button class="carousel-btn next" onclick="moveCarousel(1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <div class="catalog-btn-wrapper">
+        <a href="productos.html" class="btn-ver-catalogo">VER CATÁLOGO</a>
+    </div>
+</main>
+ 
+<section class="brands-full-width">
+    <div class="inner-container">
+        <h2 class="section-title">MARCAS EXCLUSIVAS</h2>
+        
+        <div class="brands-grid">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike">
+            <img src="https://upload.wikimedia.org/wikipedia/en/3/37/Jumpman_logo.svg" alt="Jordan">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/New_Balance_logo.svg/800px-New_Balance_logo.svg.png" alt="New Balance">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Puma-logo-%28text%29.svg/800px-Puma-logo-%28text%29.svg.png" alt="Puma">
+        </div>
+    </div>
+</section>
+<section class="container destacados-boxed-section" id="ofertas">
+    <h2 class="section-title">OFERTAS ESPECIALES</h2>
+    <div class="grid" id="offers-grid">
+        </div>
+</section>
+
+<section class="category-full-width">
+    <div class="inner-container">
+        <h2 class="section-title">COMPRA POR CATEGORÍA</h2>
+        
+        <div class="categories-grid">
+            
+            <div class="category-card">
+                <div class="category-img">
+                    <img src="https://home.ripley.com.pe/Attachment/WOP_5/2025279965315/2025279965315_2.jpg" alt="Zapatillas Hombres">
+                </div>
+                <h3>HOMBRES</h3>
+                <p>Explora nuestras zapatillas para hombres</p>
+                <a href="productos.html?gender=hombres" class="btn-category">VER COLECCIÓN</a>
+            </div>
+
+            <div class="category-card">
+                <div class="category-img">
+                    <img src="https://hips.hearstapps.com/hmg-prod/images/zapatillas-adidas-mujer-elle-66621c4d6a1c4.jpg?crop=0.962xw:0.321xh;0,0.608xh&resize=1200:*" alt="Zapatillas Mujeres">
+                </div>
+                <h3>MUJERES</h3>
+                <p>Descubre estilos exclusivos para mujeres</p>
+                <a href="productos.html?gender=mujeres" class="btn-category">VER COLECCIÓN</a>
+            </div>
+
+            <div class="category-card">
+                <div class="category-img">
+                    <img src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/60ebe12f-dd91-40ae-8d36-58d6d7a7c298.__CR0,0,970,600_PT0_SX970_V1___.jpg" alt="Zapatillas Niños">
+                </div>
+                <h3>NIÑOS</h3>
+                <p>Los mejores estilos para los más pequeños</p>
+                <a href="productos.html?gender=niños" class="btn-category">VER COLECCIÓN</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="about-store">
+    <div class="about-content">
+        <div class="about-text">
+            <h2>SOBRE JK URBAN</h2>
+            <p>JK URBAN es tu destino principal para zapatillas premium y exclusivas. Nos especializamos en traer las colecciones más buscadas de las mejores marcas del mundo como Nike, Jordan, Adidas, y muchas más.</p>
+            <p>Con más de 500+ clientes satisfechos, nos comprometemos a ofrecer la mejor calidad, precios competitivos y un servicio al cliente excepcional. Cada par de zapatillas es seleccionado cuidadosamente para cumplir con nuestros altos estándares de calidad.</p>
+            <p>Somos más que una tienda, somos una comunidad de apasionados por las zapatillas. Queremos que cada compra sea una experiencia memorable.</p>
+        </div>
+        <div class="about-stats">
+            <div class="stat">
+                <h3>500+</h3>
+                <p>Clientes Satisfechos</p>
+            </div>
+            <div class="stat">
+                <h3>1000+</h3>
+                <p>Modelos Disponibles</p>
+            </div>
+            <div class="stat">
+                <h3>100%</h3>
+                <p>Garantía de Calidad</p>
+            </div>
+            <div class="stat">
+                <h3>24/7</h3>
+                <p>Soporte por WhatsApp</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>JK URBAN</h4>
+            <p>Tu tienda de zapatillas premium en línea.</p>
+        </div>
+        <div class="footer-section">
+            <h4>ENLACES</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>CONTACTO</h4>
+            <p>📱 +51 999 123 456</p>
+            <p>📧 info@jkurban.com</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 JK URBAN. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<div class="whatsapp-float" id="whatsapp-btn" onclick="abrirWhatsApp()">
+    <i class="fab fa-whatsapp"></i>
+</div>
+
+<div class="whatsapp-modal" id="whatsapp-modal">
+    <div class="whatsapp-modal-content">
+        <div class="whatsapp-header">
+            <div class="whatsapp-header-info">
+                <div class="whatsapp-avatar">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div>
+                    <h3>JK URBAN Store</h3>
+                    <p>En línea</p>
+                </div>
+            </div>
+            <button class="close-modal" onclick="cerrarWhatsApp()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="whatsapp-messages" id="whatsapp-messages">
+            <div class="message bot-message">
+                <p>¡Hola! 👋 Bienvenido a JK URBAN. ¿En qué podemos ayudarte?</p>
+            </div>
+        </div>
+        <div class="whatsapp-input">
+            <input type="text" placeholder="Escribe tu mensaje..." id="whatsapp-input" onkeypress="if(event.key==='Enter') enviarMensajeWhatsApp()">
+            <button onclick="enviarMensajeWhatsApp()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

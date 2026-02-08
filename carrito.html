@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - JK URBAN Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/animaciones.css">
+    <link rel="stylesheet" href="css/Carrito.css">
+    <link rel="stylesheet" href="css/carrusel.css">
+    <link rel="stylesheet" href="css/categorias.css">
+    <link rel="stylesheet" href="css/contenedor.css">
+    <link rel="stylesheet" href="css/detalle.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/Grid.css">
+    <link rel="stylesheet" href="css/Hero.css">
+    <link rel="stylesheet" href="css/Layout.css">
+    <link rel="stylesheet" href="css/Marcas.css">
+    <link rel="stylesheet" href="css/Navbar.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/tienda.css">
+    <link rel="stylesheet" href="css/whatsapp.css">
+    <link rel="stylesheet" href="script.js">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+<div id="custom-alert" class="custom-alert-overlay">
+    <div class="custom-alert-box">
+        <div class="alert-icon">
+            <i class="fas fa-info-circle"></i>
+        </div>
+        <h3 id="custom-alert-title">Mensaje</h3>
+        <p id="custom-alert-message">Texto de la alerta</p>
+        <button onclick="cerrarAlerta()">ENTENDIDO</button>
+    </div>
+</div>  
+<div class="top-bar">
+    <div class="top-bar-container">
+        
+        <div class="top-social">
+            <a href="https://www.facebook.com/profile.php?id=61587292062292"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+
+        <div class="top-promo">
+            APROVECHA LOS PRECIOS ESPECIALES EN ZAPATILLAS 
+        </div>
+
+        <div class="top-contact">
+            <a href="https://wa.me/+51945105822" target="_blank">
+                <i class="fab fa-whatsapp"></i> +51 945 105 822
+            </a>
+        </div>
+
+    </div>
+</div>
+<!-- HEADER / NAVBAR -->
+<header>
+    <div class="header-top">
+        <a href="index.html" class="logo">JK URBAN</a>
+        <nav class="navbar">
+            <a href="productos.html?gender=hombres" class="nav-link">HOMBRES</a>
+            <a href="productos.html?gender=mujeres" class="nav-link">MUJERES</a>
+            <a href="productos.html?gender=niños" class="nav-link">NIÑOS</a>
+            <a href="productos.html" class="nav-link">PRODUCTOS</a>
+        </nav>
+        <div class="icons">
+            <div class="search-icon"><i class="fas fa-search"></i></div>
+            <div class="cart-icon-container" onclick="irAlCarrito()">
+                <i class="fas fa-shopping-bag"></i>
+                <span id="cart-counter" class="cart-badge">0</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- CONTENIDO PRINCIPAL DEL CARRITO -->
+<div class="cart-page-wrapper">
+    <div class="cart-container">
+        
+        <div class="cart-left-col">
+            <div class="cart-header-title">
+                <h1>TU CARRITO</h1>
+                <span id="cart-total-items">0 artículos</span>
+            </div>
+
+            <div id="cart-items-list" class="cart-items-container">
+                </div>
+        </div>
+
+        <div class="cart-right-col">
+            <div id="cart-summary" class="summary-card">
+                </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>JK URBAN</h4>
+            <p>Tu tienda de zapatillas premium en línea.</p>
+        </div>
+        <div class="footer-section">
+            <h4>ENLACES</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>CONTACTO</h4>
+            <p>📱 +51 999 123 456</p>
+            <p>📧 info@jkurban.com</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 JK URBAN. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<!-- BOTÓN WHATSAPP FLOTANTE -->
+<div class="whatsapp-float" id="whatsapp-btn" onclick="abrirWhatsApp()">
+    <i class="fab fa-whatsapp"></i>
+</div>
+
+<!-- MODAL DE CHAT WHATSAPP -->
+<div class="whatsapp-modal" id="whatsapp-modal">
+    <div class="whatsapp-modal-content">
+        <div class="whatsapp-header">
+            <div class="whatsapp-header-info">
+                <div class="whatsapp-avatar">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div>
+                    <h3>JK URBAN Store</h3>
+                    <p>En línea</p>
+                </div>
+            </div>
+            <button class="close-modal" onclick="cerrarWhatsApp()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="whatsapp-messages" id="whatsapp-messages">
+            <div class="message bot-message">
+                <p>¡Hola! 👋 Bienvenido a JK URBAN. ¿En qué podemos ayudarte?</p>
+            </div>
+        </div>
+        <div class="whatsapp-input">
+            <input type="text" placeholder="Escribe tu mensaje..." id="whatsapp-input" onkeypress="if(event.key==='Enter') enviarMensajeWhatsApp()">
+            <button onclick="enviarMensajeWhatsApp()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

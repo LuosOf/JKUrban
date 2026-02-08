@@ -1,0 +1,207 @@
+/* ============================================
+   MARCAS / LOGOS
+   ============================================ */
+.brands-section {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    background: #f9f9f9; /* Mismo gris que el fondo */
+}
+
+.brands-grid {
+    display: flex;
+    gap: 4rem; /* Espacio entre logos */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    flex-wrap: wrap; /* Para móviles */
+    margin-top: 1.5rem;
+}
+
+.brands-grid img {
+    height: 50px;               /* Altura uniforme */
+    width: auto;
+    opacity: 0.7;               /* Un poco transparentes para que se vean elegantes */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    /* --- EL TRUCO PARA HACERLOS BLANCOS --- */
+    /* 1. brightness(0) los vuelve completamente negros.
+       2. invert(1) invierte el negro a BLANCO PURO. */
+    filter: brightness(0) invert(1); 
+}
+
+.brands-grid img:hover {
+    opacity: 1;                 /* Se vuelven blanco sólido brillante */
+    transform: scale(1.1);      /* Crecen un poco */
+    /* Mantenemos el filtro para que sigan siendo blancos */
+}
+
+/* Responsive para logos en celular */
+@media (max-width: 600px) {
+    .brands-grid {
+        gap: 2rem;
+    }
+    .brands-grid img {
+        height: 35px; /* Más pequeños en celular */
+    }
+}
+.carousel-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--black);
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background: var(--accent-red);
+    transform: scale(1.1);
+}
+
+.carousel-indicators {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.carousel-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicator.active {
+    background: var(--accent-red);
+    width: 30px;
+    border-radius: 5px;
+}
+/* ============================================
+   SECCIÓN MARCAS: ANCHO COMPLETO (GRIS)
+   ============================================ */
+
+.brands-full-width {
+    width: 100%;                /* Ancho total de la pantalla */
+    background-color: #000000be;  /* Mismo GRIS que categorías */
+    padding: 4rem 0;            /* Espacio vertical */
+    margin: 4rem 0;             /* Separación */
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.05); /* Sombra interna sutil */
+}
+
+/* Contenedor interno para centrar los logos */
+.brands-full-width .inner-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+/* Ajuste del título */
+.brands-full-width .section-title {
+    margin-bottom: 3rem;
+    color: #ffffff;
+}
+
+/* Ajuste de la cuadrícula de logos */
+.brands-grid {
+    display: flex;
+    gap: 4rem;                /* Separación entre logos */
+    align-items: center;      /* Alineación vertical */
+    justify-content: center;  /* Alineación horizontal (centro) */
+    flex-wrap: wrap;          /* Para que baje en celulares */
+}
+
+/* Estilo de los logos (Efecto elegante) */
+.brands-grid img {
+    height: 50px;             /* Altura uniforme */
+    width: auto;
+    opacity: 0.6;             /* Un poco transparentes */
+    filter: grayscale(100%);  /* Blanco y negro inicial */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Efecto al pasar el mouse sobre los logos */
+.brands-grid img:hover {
+    opacity: 1;
+    filter: grayscale(0%);    /* Color original */
+    transform: scale(1.1);    /* Crecen un poco */
+}
+
+/* Responsive para celulares */
+@media (max-width: 600px) {
+    .brands-grid {
+        gap: 2rem;
+    }
+    .brands-grid img {
+        height: 35px;
+    }
+}
+/* ============================================
+   SECCIÓN MARCAS: ANCHO COMPLETO OSCURO
+   ============================================ */
+
+.brands-full-width {
+    width: 100%;
+    background-color: #000000d1; /* Fondo NEGRO obligatorio */
+    padding: 3rem 0;
+    margin: 4rem 0;
+}
+
+.brands-full-width .inner-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+/* Título en Blanco */
+.brands-full-width .section-title {
+    margin-bottom: 3rem;
+    color: #ffffff !important; /* Texto blanco forzado */
+}
+
+/* Cuadrícula */
+.brands-grid {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* LOGOS BLANCOS (Corrección Definitiva) */
+.brands-grid img {
+    height: 45px;
+    width: auto;
+    opacity: 0.8;
+    
+    /* 1. Quitamos cualquier modo de mezcla que los haga invisibles */
+    mix-blend-mode: normal !important; 
+    
+    /* 2. Filtro PODEROSO para volverlos blancos */
+    /* brightness(0) los pone negros -> invert(1) invierte el negro a BLANCO PURO */
+    filter: brightness(0) invert(1) !important; 
+    -webkit-filter: brightness(0) invert(1) !important; /* Para compatibilidad */
+    
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Efecto al pasar el mouse */
+.brands-grid img:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    filter: brightness(0) invert(1) !important; /* Mantiene el blanco al moverse */
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .brands-grid { gap: 2rem; }
+    .brands-grid img { height: 30px; }
+}
