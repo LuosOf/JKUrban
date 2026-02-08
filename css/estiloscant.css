@@ -99,3 +99,199 @@
 .btn-remove i {
     font-size: 0.9rem;
 }
+/* =======================================================
+   RESPONSIVE DESIGN (CELULARES Y TABLETS)
+   ======================================================= */
+
+/* TABLETS Y PANTALLAS MEDIANAS (Max 1024px) */
+@media (max-width: 1024px) {
+    .cart-container {
+        grid-template-columns: 1fr; /* Carrito en una sola columna */
+    }
+    
+    .product-detail-container {
+        padding: 20px;
+    }
+    
+    .product-main-flex {
+        grid-template-columns: 1fr; /* Detalle producto: imagen arriba, info abajo */
+        gap: 30px;
+    }
+}
+
+/* CELULARES (Max 768px) */
+@media (max-width: 768px) {
+
+    /* --- 1. BARRA SUPERIOR (TOP BAR) --- */
+    .top-bar-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+        padding: 10px;
+    }
+    
+    .top-promo {
+        order: -1; /* Pone la promo primero */
+        font-size: 0.75rem;
+    }
+    
+    .top-social, .top-contact {
+        justify-content: center;
+    }
+
+    /* --- 2. HEADER Y NAVBAR --- */
+    .header-top {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .logo {
+        margin-bottom: 5px;
+    }
+
+    .navbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        font-size: 0.9rem;
+    }
+    
+    .icons {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    /* Buscador móvil */
+    .search-box.active .search-input {
+        width: 180px; /* Un poco más pequeño en celular */
+    }
+
+    /* --- 3. CATÁLOGO DE PRODUCTOS --- */
+    .products-page {
+        grid-template-columns: 1fr; /* Quita la sidebar lateral */
+        padding: 15px;
+    }
+
+    /* Sidebar de filtros como acordeón o bloque superior */
+    .filters-sidebar {
+        position: relative;
+        top: 0;
+        width: 100%;
+        margin-bottom: 20px;
+        border: 1px solid #eee;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 productos por fila */
+        gap: 10px;
+    }
+
+    .card .img-container {
+        height: 180px; /* Imágenes más chicas */
+    }
+
+    /* --- 4. DETALLE DE PRODUCTO --- */
+    .detail-page-title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .product-main-flex {
+        padding: 20px;
+    }
+
+    .main-image-display {
+        height: 300px;
+    }
+
+    .thumbnails-grid .thumb-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .size-options {
+        justify-content: center;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    /* Tabla de Tallas con Scroll */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        display: block;
+        width: 100%;
+    }
+    
+    .golden-table {
+        min-width: 400px; /* Fuerza el ancho para activar scroll */
+    }
+
+    /* --- 5. CARRITO DE COMPRAS --- */
+    .cart-header-title h1 {
+        font-size: 1.4rem;
+    }
+
+    .cart-item-card {
+        grid-template-columns: 80px 1fr;
+        grid-template-areas: 
+            "img info"
+            "controls controls";
+        gap: 15px;
+    }
+
+    .cart-img-box {
+        grid-area: img;
+        width: 80px;
+        height: 80px;
+    }
+
+    .cart-info-box {
+        grid-area: info;
+    }
+
+    .cart-price-box {
+        grid-area: controls;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding-top: 10px;
+        border-top: 1px solid #f0f0f0;
+    }
+
+    .qty-control {
+        margin-top: 5px;
+    }
+
+    .summary-card {
+        position: static; /* Quita el sticky en celular */
+    }
+
+    /* --- 6. FOOTER --- */
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .footer-section ul {
+        align-items: center;
+    }
+}
+
+/* CELULARES MUY PEQUEÑOS (Max 480px) */
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr; /* 1 producto por fila */
+    }
+    
+    .top-bar-container {
+        font-size: 0.7rem;
+    }
+}
