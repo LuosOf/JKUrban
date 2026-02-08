@@ -383,40 +383,49 @@ function toggleSearch() {
         applyFilters();   // Resetear filtros
     }
 }
+// LÓGICA DE BÚSQUEDA GLOBAL
 document.addEventListener('keyup', function(e) {
     if (e.target && e.target.id === 'nav-search-input') {
-        applyFilters();
+        
+        // A. Si estamos en la página de productos, filtra en tiempo real
+        if (document.getElementById('products-grid')) {
+            applyFilters();
+        }
+
+        // B. Si presiona ENTER, redirigir a productos.html con la búsqueda
+        if (e.key === 'Enter') {
+            const term = e.target.value.trim();
+            if (term) {
+                // Redirige enviando el término en la URL (?search=nike)
+                window.location.href = `productos.html?search=${encodeURIComponent(term)}`;
+            }
+        }
     }
 });
-function applyFilters() {
-    const searchInput = document.getElementById('search-input');
-    const typeCheckboxes = Array.from(document.querySelectorAll('#type-filter input:checked')).map(i => i.value);
-    const brandCheckboxes = Array.from(document.querySelectorAll('#brands-filter input:checked')).map(i => i.value);
-    const categoryCheckboxes = Array.from(document.querySelectorAll('#gender-filter input:checked')).map(i => i.value);
-    const styleCheckboxes = Array.from(document.querySelectorAll('#style-filter input:checked')).map(i => i.value);
-    const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
-
-    let filtered = productsDB.filter(p => {
-        if (searchTerm && !p.name.toLowerCase().includes(searchTerm) && !p.brand.toLowerCase().includes(searchTerm)) return false;
-        if (typeCheckboxes.length > 0 && !typeCheckboxes.includes(p.type)) return false;
-        if (brandCheckboxes.length > 0 && !brandCheckboxes.includes(p.brand)) return false;
-        if (categoryCheckboxes.length > 0 && !categoryCheckboxes.includes(p.category)) return false;
-        if (styleCheckboxes.length > 0 && !styleCheckboxes.includes(p.style)) return false;
-        return true;
-    });
-
-    const totalPages = Math.ceil(filtered.length / productsPerPage);
-    if (currentPage > totalPages) currentPage = 1;
-
-    const startIndex = (currentPage - 1) * productsPerPage;
-    const productsToDisplay = filtered.slice(startIndex, startIndex + productsPerPage);
-
-    const grid = document.getElementById('products-grid');
-    if (grid) {
-        grid.innerHTML = productsToDisplay.map(p => generateProductCard(p)).join('');
+function applyUrlFilters() {
+    const params = new URLSearchParams(window.location.search);
+    
+    // 1. Aplicar filtro de Género (?gender=hombres)
+    const genderParam = params.get('gender'); 
+    if (genderParam) {
+        const checkboxId = `cat-${genderParam}`; 
+        const checkbox = document.getElementById(checkboxId);
+        if (checkbox) checkbox.checked = true;
     }
 
-    renderPagination(totalPages);
+    // 2. Aplicar filtro de Búsqueda (?search=nike)
+    const searchParam = params.get('search');
+    if (searchParam) {
+        const searchInput = document.getElementById('nav-search-input');
+        const searchBox = document.querySelector('.search-box');
+        
+        if (searchInput) {
+            searchInput.value = searchParam; // Pone el texto en la caja
+            // Opcional: Expandir la caja visualmente
+            if(searchBox) searchBox.classList.add('active');
+            searchInput.focus();
+        }
+    }
 }
 // ============================================
 // 1. NUEVA FUNCIÓN: LEER URL Y MARCAR FILTRO

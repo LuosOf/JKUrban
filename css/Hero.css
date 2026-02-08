@@ -1,123 +1,155 @@
 /* ============================================
-   HERO SECTION
+   BANNER PRINCIPAL (HERO SECTION)
    ============================================ */
+
 .hero {
-    height: 85vh;
-    background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%),
+    height: 85vh; /* Altura del banner (casi toda la pantalla) */
+    width: 100%;
+    /* Imagen de fondo con una capa oscura encima para que se lea el texto */
+    background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.1) 100%),
                 url('https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=2070&auto=format&fit=crop');
     background-size: cover;
-    background-position: right center;
-    background-attachment: fixed;
+    background-position: center;
+    background-attachment: fixed; /* Efecto Parallax (el fondo se queda quieto al bajar) */
+    
     display: flex;
-    align-items: center;
-    padding: 0 5%;
-    color: var(--white);
+    align-items: center; /* Centrar verticalmente */
+    padding: 0 5%; /* Margen a los lados */
     position: relative;
     overflow: hidden;
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    right: -100px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(230, 34, 34, 0.2) 0%, transparent 70%);
-    border-radius: 50%;
-    z-index: 0;
-    animation: pulse 3s ease-in-out infinite;
-}
-
-.hero::after {
-    content: '';
-    position: absolute;
-    left: -200px;
-    bottom: -100px;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(230, 34, 34, 0.15) 0%, transparent 70%);
-    border-radius: 50%;
-    z-index: 0;
-}
-
+/* Contenedor del texto */
 .hero-content {
     position: relative;
-    z-index: 1;
-    max-width: 500px;
-    animation: slideInUp 0.8s ease-out;
+    z-index: 2;
+    max-width: 650px; /* Ancho máximo del texto */
+    color: #fff;
+    animation: slideInLeft 1s ease-out; /* Animación de entrada */
 }
 
+/* Etiqueta "NUEVA COLECCIÓN" */
 .badge {
     display: inline-block;
-    font-weight: 700;
-    color: var(--white);
-    background: var(--accent-red);
+    background-color: #e62222; /* Rojo intenso */
+    color: #fff;
+    padding: 8px 16px;
     font-size: 0.85rem;
-    padding: 0.5rem 1.5rem;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border-radius: 20px;
-    animation: pulse 2s ease-in-out infinite;
-}
-
-.hero h1 {
-    font-size: 5.5rem;
-    line-height: 1;
-    font-weight: 900;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: -2px;
-    animation: slideInUp 0.8s ease-out 0.2s both;
-}
-
-.hero .description {
-    font-size: 1.1rem;
-    margin-bottom: 2.5rem;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.9);
-    animation: slideInUp 0.8s ease-out 0.3s both;
-}
-
-.hero-btns {
-    display: flex;
-    gap: 1.2rem;
-    align-items: center;
-    animation: slideInUp 0.8s ease-out 0.4s both;
-}
-
-.btn-primary, .btn-secondary {
-    padding: 14px 32px;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid transparent;
-    font-size: 0.95rem;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
+    border-radius: 30px; /* Bordes muy redondos */
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(230, 34, 34, 0.4); /* Resplandor rojo */
 }
 
+/* Título Gigante "ESTILO URBANO" */
+.hero h1 {
+    font-size: 5rem; /* Texto muy grande */
+    line-height: 0.95;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+/* Descripción */
+.hero .description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 40px;
+    font-weight: 400;
+    max-width: 90%;
+}
+
+/* ============================================
+   BOTONES DEL BANNER (CORREGIDOS)
+   ============================================ */
+
+/* Contenedor de los botones */
+.hero-btns {
+    display: flex;
+    gap: 20px; /* Separación entre botones */
+    align-items: center;
+}
+
+/* Estilo Base para ambos botones */
+.btn-primary, .btn-secondary {
+    padding: 16px 40px; /* Botones grandes */
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+    border: 2px solid transparent; /* Prepara el borde */
+}
+
+/* BOTÓN 1: COMPRAR AHORA (Blanco Sólido) */
 .btn-primary {
-    background: var(--white);
-    color: var(--primary-dark);
+    background-color: #ffffff;
+    color: #1a1a1a; /* Texto oscuro */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
 }
 
 .btn-primary:hover {
-    background: var(--accent-red);
-    color: var(--white);
+    background-color: #e62222; /* Se vuelve rojo */
+    color: #ffffff; /* Texto blanco */
+    transform: translateY(-5px); /* Se eleva */
+    box-shadow: 0 15px 30px rgba(230, 34, 34, 0.4); /* Resplandor rojo */
 }
 
+/* BOTÓN 2: VER OFERTAS (Transparente con Borde) */
 .btn-secondary {
-    background: transparent;
-    color: var(--white);
-    border: 2px solid var(--white);
+    background-color: transparent;
+    color: #ffffff;
+    border-color: #ffffff; /* Borde blanco */
 }
 
 .btn-secondary:hover {
-    background: var(--white);
-    color: var(--primary-dark);
+    background-color: #ffffff; /* Se llena de blanco */
+    color: #1a1a1a; /* Texto oscuro */
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Animación de entrada */
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* RESPONSIVE (Móvil) */
+@media (max-width: 768px) {
+    .hero {
+        background-position: top center; /* Ajusta la imagen en celular */
+        height: auto;
+        min-height: 600px;
+        padding-top: 80px;
+        align-items: flex-start; /* Sube el contenido */
+    }
+
+    .hero-content {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .hero h1 {
+        font-size: 3rem; /* Título más pequeño en celular */
+    }
+
+    .hero-btns {
+        flex-direction: column; /* Botones uno debajo del otro */
+        width: 100%;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%; /* Botones ocupan todo el ancho */
+        text-align: center;
+    }
 }

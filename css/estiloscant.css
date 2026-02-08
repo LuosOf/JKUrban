@@ -1,297 +1,267 @@
+:root {
+    --primary-dark: #2c3e50;
+    --accent-red: #e62222;
+    --white: #ffffff;
+    --black: #000000;
+    --gray-light: #f5f5f5;
+    --gray-medium: #e0e0e0;
+    --text-dark: #1a1a1a;
+    --shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    opacity: 1;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+button { cursor: pointer; border: none; font-family: inherit; }
+ul { list-style: none; }
+
+/* --- BOTONES GLOBALES --- */
+.btn-primary, .btn-secondary {
+    padding: 14px 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary { background: var(--white); color: var(--text-dark); }
+.btn-primary:hover { background: var(--accent-red); color: var(--white); }
+
+.btn-secondary { background: transparent; color: var(--white); border: 2px solid var(--white); }
+.btn-secondary:hover { background: var(--white); color: var(--black); }
+
 /* ============================================
-   ESTILOS DE CONTROLES DE CANTIDAD (MEJORADO)
+   ARREGLO DE ALERTA (ALERT BOX)
+   ============================================ */
+.custom-alert-overlay {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); 
+    display: none; /* ¡ESTO ES LO IMPORTANTE! LA OCULTA AL INICIO */
+    align-items: center; 
+    justify-content: center; 
+    z-index: 10000;
+    backdrop-filter: blur(3px);
+}
+
+.custom-alert-overlay.active { 
+    display: flex; /* Se muestra solo cuando JS agrega la clase .active */
+    animation: fadeIn 0.3s ease; 
+}
+
+.custom-alert-box {
+    background: #fff; 
+    padding: 30px; 
+    border-radius: 12px; 
+    width: 90%; 
+    max-width: 400px;
+    text-align: center; 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2); 
+    transform: scale(0.9);
+    animation: popIn 0.3s ease forwards;
+}
+
+.alert-icon { font-size: 3rem; color: #111; margin-bottom: 15px; }
+.custom-alert-box h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
+.custom-alert-box p { font-size: 1rem; color: #666; margin-bottom: 25px; }
+
+.custom-alert-box button {
+    background-color: #111; 
+    color: #fff; 
+    padding: 12px 30px; 
+    border-radius: 6px; 
+    font-weight: 700; 
+    width: 100%;
+    transition: 0.3s;
+}
+
+.custom-alert-box button:hover { 
+    background-color: #333; 
+    transform: translateY(-2px); 
+}
+
+/* Animaciones necesarias para la alerta */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+/* ============================================
+   SECCIÓN SOBRE NOSOTROS (ESTÉTICO)
    ============================================ */
 
-/* Contenedor que agrupa el stepper y el botón eliminar */
-.qty-controls {
+/* 1. Fondo y Espaciado General */
+.about-store {
+    background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
+    padding: 5rem 5%; /* Espacio amplio arriba y abajo */
+    position: relative;
+    border-top: 1px solid #eee;
+}
+
+/* 2. Contenedor de Rejilla (2 Columnas: Texto | Stats) */
+.about-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Mitad y mitad */
+    gap: 4rem; /* Separación entre columnas */
+    align-items: center; /* Centrado vertical */
+}
+
+/* 3. Estilos del Texto (Izquierda) */
+.about-text h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #1a1a1a;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+/* Línea roja debajo del título */
+.about-text h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: #e62222; /* Rojo JK Urban */
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    line-height: 1.8; /* Texto más legible */
+    color: #555;
+    text-align: justify;
+}
+
+/* 4. Cuadrícula de Estadísticas (Derecha) */
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2x2 */
+    gap: 20px;
+}
+
+/* 5. Tarjetas Individuales (Stats) */
+.stat {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Sombra suave */
+    transition: all 0.3s ease;
+    border-bottom: 4px solid transparent; /* Borde invisible inicial */
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Alinea todo a la derecha */
-    gap: 8px;
-}
-
-/* El "Stepper": Caja con bordes redondeados que contiene [- 1 +] */
-.qty-stepper {
-    display: flex;
-    align-items: center;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px; /* Bordes suaves */
-    background: #fff;
-    overflow: hidden; /* Para que los botones no se salgan */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.03); /* Sutil sombra */
-}
-
-/* Los botones de - y + */
-.qty-btn {
-    width: 32px;
-    height: 32px;
-    background: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 1.1rem;
-    color: #555;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
     justify-content: center;
-}
-
-.qty-btn:hover {
-    background: #f2f2f2;
-    color: #000;
-}
-
-.qty-btn:active {
-    background: #e0e0e0;
-}
-
-/* El número en el centro */
-.qty-input {
-    width: 40px;
-    height: 32px;
-    text-align: center;
-    border: none;
-    border-left: 1px solid #f0f0f0;
-    border-right: 1px solid #f0f0f0;
-    font-weight: 700;
-    color: #333;
-    background: #fff;
-    outline: none;
-    font-size: 0.95rem;
-    
-    /* 1. Propiedad estándar (quita la advertencia en algunos editores) */
-    appearance: textfield; 
-    
-    /* 2. Específico para Firefox (necesario aunque salga advertencia amarilla) */
-    -moz-appearance: textfield;
-}
-
-/* 3. Específico para Chrome, Safari y Edge (Webkit) */
-/* Esto es OBLIGATORIO para quitar las flechas en estos navegadores */
-.qty-input::-webkit-inner-spin-button, 
-.qty-input::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
-}
-
-/* Botón Eliminar más estético */
-.btn-remove {
-    font-size: 0.8rem;
-    color: #e62222; /* Rojo acento */
-    text-decoration: none;
-    background: transparent;
-    border: 1px solid transparent;
-    cursor: pointer;
-    display: flex;
     align-items: center;
-    gap: 5px;
-    font-weight: 600;
-    padding: 4px 8px;
-    border-radius: 4px;
-    transition: 0.2s;
 }
 
-.btn-remove:hover {
-    background: #fff5f5;
-    border-color: #ffe0e0;
+/* Efecto Hover: Sube y muestra borde rojo */
+.stat:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-bottom-color: #e62222;
 }
 
-.btn-remove i {
+/* Números Grandes */
+.stat h3 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #e62222; /* Rojo */
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+/* Texto debajo del número */
+.stat p {
+    color: #777;
+    font-weight: 700;
     font-size: 0.9rem;
-}
-/* =======================================================
-   RESPONSIVE DESIGN (CELULARES Y TABLETS)
-   ======================================================= */
-
-/* TABLETS Y PANTALLAS MEDIANAS (Max 1024px) */
-@media (max-width: 1024px) {
-    .cart-container {
-        grid-template-columns: 1fr; /* Carrito en una sola columna */
-    }
-    
-    .product-detail-container {
-        padding: 20px;
-    }
-    
-    .product-main-flex {
-        grid-template-columns: 1fr; /* Detalle producto: imagen arriba, info abajo */
-        gap: 30px;
-    }
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 0.5px;
 }
 
-/* CELULARES (Max 768px) */
-@media (max-width: 768px) {
+/* ============================================
+   RESPONSIVE (CELULARES)
+   ============================================ */
+@media (max-width: 900px) {
+    .about-content {
+        grid-template-columns: 1fr; /* Una sola columna vertical */
+        gap: 3rem;
+    }
 
-    /* --- 1. BARRA SUPERIOR (TOP BAR) --- */
-    .top-bar-container {
-        flex-direction: column;
+    .about-text {
         text-align: center;
-        gap: 8px;
-        padding: 10px;
+    }
+
+    .about-text h2::after {
+        left: 50%;
+        transform: translateX(-50%); /* Centrar la línea roja */
     }
     
-    .top-promo {
-        order: -1; /* Pone la promo primero */
-        font-size: 0.75rem;
-    }
-    
-    .top-social, .top-contact {
-        justify-content: center;
-    }
-
-    /* --- 2. HEADER Y NAVBAR --- */
-    .header-top {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px;
-    }
-    
-    .logo {
-        margin-bottom: 5px;
-    }
-
-    .navbar {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-        font-size: 0.9rem;
-    }
-    
-    .icons {
-        width: 100%;
-        justify-content: center;
-        margin-top: 10px;
-    }
-
-    /* Buscador móvil */
-    .search-box.active .search-input {
-        width: 180px; /* Un poco más pequeño en celular */
-    }
-
-    /* --- 3. CATÁLOGO DE PRODUCTOS --- */
-    .products-page {
-        grid-template-columns: 1fr; /* Quita la sidebar lateral */
-        padding: 15px;
-    }
-
-    /* Sidebar de filtros como acordeón o bloque superior */
-    .filters-sidebar {
-        position: relative;
-        top: 0;
-        width: 100%;
-        margin-bottom: 20px;
-        border: 1px solid #eee;
-    }
-
-    .grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 productos por fila */
-        gap: 10px;
-    }
-
-    .card .img-container {
-        height: 180px; /* Imágenes más chicas */
-    }
-
-    /* --- 4. DETALLE DE PRODUCTO --- */
-    .detail-page-title {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-    }
-
-    .product-main-flex {
-        padding: 20px;
-    }
-
-    .main-image-display {
-        height: 300px;
-    }
-
-    .thumbnails-grid .thumb-img {
-        width: 60px;
-        height: 60px;
-    }
-
-    .size-options {
-        justify-content: center;
-    }
-
-    .action-buttons {
-        flex-direction: column;
-    }
-
-    /* Tabla de Tallas con Scroll */
-    .table-responsive {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        display: block;
-        width: 100%;
-    }
-    
-    .golden-table {
-        min-width: 400px; /* Fuerza el ancho para activar scroll */
-    }
-
-    /* --- 5. CARRITO DE COMPRAS --- */
-    .cart-header-title h1 {
-        font-size: 1.4rem;
-    }
-
-    .cart-item-card {
-        grid-template-columns: 80px 1fr;
-        grid-template-areas: 
-            "img info"
-            "controls controls";
-        gap: 15px;
-    }
-
-    .cart-img-box {
-        grid-area: img;
-        width: 80px;
-        height: 80px;
-    }
-
-    .cart-info-box {
-        grid-area: info;
-    }
-
-    .cart-price-box {
-        grid-area: controls;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        padding-top: 10px;
-        border-top: 1px solid #f0f0f0;
-    }
-
-    .qty-control {
-        margin-top: 5px;
-    }
-
-    .summary-card {
-        position: static; /* Quita el sticky en celular */
-    }
-
-    /* --- 6. FOOTER --- */
-    .footer-content {
-        grid-template-columns: 1fr;
+    .about-text p {
         text-align: center;
-        gap: 30px;
-    }
-    
-    .footer-section ul {
-        align-items: center;
     }
 }
 
-/* CELULARES MUY PEQUEÑOS (Max 480px) */
 @media (max-width: 480px) {
-    .grid {
-        grid-template-columns: 1fr; /* 1 producto por fila */
+    .about-stats {
+        grid-template-columns: 1fr; /* Una tarjeta debajo de otra en pantallas muy pequeñas */
     }
+}
+
+/* ============================================
+   CORRECCIÓN: IMÁGENES DE TAMAÑO UNIFORME
+   ============================================ */
+
+/* 1. El contenedor define el tamaño FIJO de la caja de imagen */
+.card .img-container {
+    width: 100%;
+    height: 250px; /* <--- ALTURA FIJA IMPORTANTE. Ajusta si es necesario (ej. 220px o 280px) */
+    background-color: #ffffff; /* Fondo blanco para rellenar espacios */
+    display: flex;
+    align-items: center; /* Centra la imagen verticalmente */
+    justify-content: center; /* Centra la imagen horizontalmente */
+    overflow: hidden; /* Asegura que nada se salga del cuadro */
+    border-radius: 8px; /* Bordes suaves opcionales */
+    margin-bottom: 15px;
+    padding: 10px; /* Un poco de aire alrededor de la zapatilla */
+}
+
+/* 2. La imagen se adapta perfectamente a ese contenedor */
+.card .img-container img {
+    width: 100%;
+    height: 100%;
     
-    .top-bar-container {
-        font-size: 0.7rem;
-    }
+    /* CLAVE: 'contain' asegura que se vea TODA la zapatilla sin cortarse.
+       Si la imagen es muy estrecha o baja, dejará espacio blanco a los lados,
+       pero el cuadro externo siempre medirá 250px. */
+    object-fit: contain; 
+
+    /* Mantenemos tu efecto de zoom al pasar el mouse */
+    transition: transform 0.3s ease;
+}
+
+/* Opcional: Asegurar que el zoom funcione bien */
+.card:hover .img-container img {
+    transform: scale(1.08);
 }

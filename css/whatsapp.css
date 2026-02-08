@@ -1,197 +1,183 @@
-
 /* ============================================
-   BOTÓN Y CHAT DE WHATSAPP
+   ESTILO CHAT WHATSAPP (CORREGIDO)
    ============================================ */
+
+/* 1. Botón Flotante (Círculo Verde) */
 .whatsapp-float {
     position: fixed;
     bottom: 30px;
     right: 30px;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #25d366, #20ba5a);
+    background-color: #25d366;
+    color: #fff;
     border-radius: 50%;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 10000;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
-    color: white;
     cursor: pointer;
-    box-shadow: var(--shadow-lg);
-    transition: all 0.3s ease;
-    z-index: 50;
+    transition: transform 0.3s;
 }
 
 .whatsapp-float:hover {
     transform: scale(1.1);
-    box-shadow: 0 10px 40px rgba(37, 211, 102, 0.3);
+    background-color: #128c7e;
 }
 
+/* 2. Contenedor del Modal (La ventana) */
 .whatsapp-modal {
     position: fixed;
     bottom: 100px;
     right: 30px;
-    width: 380px;
-    height: 500px;
-    background: var(--white);
-    border-radius: 12px;
-    box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16);
-    display: none;
-    flex-direction: column;
-    z-index: 50;
-    animation: slideIn 0.3s ease;
+    width: 350px;
+    height: 450px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    z-index: 10000;
+    overflow: hidden; /* Para que nada se salga de los bordes redondos */
+    
+    /* FLEXBOX: Esto arregla el hueco blanco */
+    display: none; 
+    flex-direction: column; 
+    
+    /* Animación */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
 }
 
 .whatsapp-modal.active {
-    display: flex;
+    display: flex !important; /* Fuerza el display flex */
+    opacity: 1;
+    transform: translateY(0);
 }
 
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.whatsapp-modal-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
+/* 3. Cabecera Verde */
 .whatsapp-header {
-    background: linear-gradient(135deg, #25d366, #20ba5a);
+    background-color: #075e54;
     color: white;
-    padding: 1.2rem;
-    border-radius: 12px 12px 0 0;
+    padding: 15px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0; /* No se encoge */
 }
 
 .whatsapp-header-info {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 10px;
 }
 
 .whatsapp-avatar {
-    width: 45px;
-    height: 45px;
-    background: rgba(255, 255, 255, 0.2);
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.2);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-}
-
-.whatsapp-header-info h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 0.2rem;
-}
-
-.whatsapp-header-info p {
-    font-size: 0.8rem;
-    opacity: 0.9;
 }
 
 .close-modal {
     background: none;
+    border: none;
     color: white;
     font-size: 1.2rem;
     cursor: pointer;
 }
 
+/* 4. Área de Mensajes (Fondo Beige) */
 .whatsapp-messages {
-    flex: 1;
+    flex: 1; /* Ocupa todo el espacio disponible */
+    background-color: #e5ddd5; /* Color beige oficial */
+    padding: 20px;
     overflow-y: auto;
-    padding: 1.5rem;
-    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.message {
-    margin-bottom: 1rem;
-    animation: messageIn 0.3s ease;
+/* Burbujas */
+.message p {
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    max-width: 80%;
+    margin: 0;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
 
-@keyframes messageIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.bot-message {
+    align-self: flex-start;
 }
-
 .bot-message p {
-    background: #e0f2f1;
-    color: var(--text-dark);
-    padding: 0.8rem 1.2rem;
-    border-radius: 12px;
-    border-bottom-left-radius: 4px;
-    max-width: 85%;
-    font-size: 0.95rem;
+    background: #fff;
+    color: #333;
+    border-top-left-radius: 0;
 }
 
 .user-message {
-    text-align: right;
+    align-self: flex-end;
 }
-
 .user-message p {
-    background: #25d366;
-    color: white;
-    padding: 0.8rem 1.2rem;
-    border-radius: 12px;
-    border-bottom-right-radius: 4px;
-    max-width: 85%;
-    display: inline-block;
-    font-size: 0.95rem;
+    background: #dcf8c6; /* Verde claro */
+    color: #333;
+    border-top-right-radius: 0;
 }
 
+/* 5. Área de Escritura (Abajo) */
 .whatsapp-input {
+    background-color: #f0f0f0;
+    padding: 10px;
     display: flex;
-    padding: 1rem;
-    background: var(--white);
-    border-radius: 0 0 12px 12px;
-    gap: 0.8rem;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid #ddd;
+    flex-shrink: 0; /* Asegura que no desaparezca */
 }
 
 .whatsapp-input input {
     flex: 1;
-    border: 1px solid var(--gray-medium);
-    padding: 0.8rem 1rem;
+    padding: 10px 15px;
     border-radius: 20px;
-    font-size: 0.95rem;
+    border: 1px solid #fff;
     outline: none;
-    transition: border-color 0.3s ease;
-}
-
-.whatsapp-input input:focus {
-    border-color: #25d366;
+    font-size: 0.95rem;
 }
 
 .whatsapp-input button {
+    background-color: #075e54;
+    color: white;
+    border: none;
     width: 40px;
     height: 40px;
-    background: #25d366;
-    color: white;
     border-radius: 50%;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
+    font-size: 1.1rem;
+    transition: 0.2s;
 }
 
 .whatsapp-input button:hover {
-    background: #20ba5a;
-    transform: scale(1.05);
+    background-color: #128c7e;
+    transform: scale(1.1);
 }
 
+/* Ajuste para móviles */
+@media (max-width: 480px) {
+    .whatsapp-modal {
+        width: 90%;
+        height: 70vh;
+        right: 5%;
+        bottom: 90px;
+    }
+}

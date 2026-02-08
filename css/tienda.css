@@ -1,79 +1,125 @@
-
 /* ============================================
-   SOBRE LA TIENDA MEJORADO
+   SECCIÓN SOBRE NOSOTROS (ESTILO PREMIUM)
    ============================================ */
+
+/* 1. Contenedor Principal con fondo degradado suave */
 .about-store {
-    background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 50%, #ebebeb 100%);
-    padding: 5rem 5%;
+    background: linear-gradient(180deg, #f9f9f9 0%, #f0f0f0 100%);
+    padding: 6rem 5%;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
 }
 
+/* 2. Grid de dos columnas (Texto a la izq, Cuadros a la der) */
 .about-content {
-    max-width: 1400px;
+    max-width: 1300px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1fr 1fr; /* Divide en dos partes iguales */
+    gap: 5rem; /* Espacio grande entre las dos mitades */
     align-items: center;
 }
 
+/* 3. Estilos del Texto (Columna Izquierda) */
 .about-text h2 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     font-weight: 900;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--text-dark);
+    color: #1a1a1a;
     position: relative;
-    padding-bottom: 1rem;
+    padding-bottom: 1.5rem;
 }
 
+/* Línea roja característica debajo del título */
 .about-text h2::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 60px;
-    height: 4px;
-    background: var(--accent-red);
+    width: 80px;
+    height: 5px;
+    background: #e62222; /* Rojo de la marca */
+    border-radius: 2px;
 }
 
 .about-text p {
     margin-bottom: 1.5rem;
-    font-size: 1.05rem;
-    line-height: 1.8;
+    font-size: 1.1rem;
+    line-height: 1.9;
     color: #555;
+    text-align: justify; /* Texto justificado para que se vea ordenado */
 }
 
+/* 4. Cuadrícula de Estadísticas (Columna Derecha - 2x2) */
 .about-stats {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
 }
 
+/* 5. Diseño de las Tarjetas (Cuadros) */
 .stat {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: 12px;
+    background: #ffffff;
+    padding: 2.5rem 1.5rem;
+    border-radius: 15px;
     text-align: center;
-    box-shadow: var(--shadow);
-    transition: all 0.3s ease;
-    border-top: 4px solid var(--accent-red);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Sombra suave y elegante */
+    transition: all 0.4s ease;
+    border: 1px solid transparent;
+    position: relative;
+    top: 0;
 }
 
+/* Efecto al pasar el mouse: Flota y brilla */
 .stat:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-12px); /* Sube */
+    box-shadow: 0 20px 40px rgba(230, 34, 34, 0.15); /* Sombra rojiza */
+    border-color: rgba(230, 34, 34, 0.1);
 }
 
+/* Números Grandes y Rojos */
 .stat h3 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 900;
-    color: var(--accent-red);
+    color: #e62222;
     margin-bottom: 0.5rem;
+    line-height: 1;
+    font-family: 'Arial Black', sans-serif; /* Fuente más gruesa para números */
 }
 
+/* Texto debajo del número */
 .stat p {
-    color: #777;
-    font-weight: 600;
+    color: #888;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
     margin: 0;
+    letter-spacing: 1px;
+}
+
+/* --- RESPONSIVE (Para que se vea bien en celular) --- */
+@media (max-width: 968px) {
+    .about-content {
+        grid-template-columns: 1fr; /* Una sola columna vertical */
+        gap: 4rem;
+        text-align: center;
+    }
+
+    .about-text h2::after {
+        left: 50%;
+        transform: translateX(-50%); /* Centra la línea roja */
+    }
+
+    .about-text p {
+        text-align: center; /* Texto centrado en móvil */
+    }
+}
+
+@media (max-width: 480px) {
+    .about-store { padding: 4rem 5%; }
+    .stat h3 { font-size: 2.5rem; }
+    /* En celulares muy pequeños, las stats una debajo de otra */
+    .about-stats { grid-template-columns: 1fr; gap: 15px; }
 }

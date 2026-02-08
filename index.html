@@ -57,8 +57,15 @@
             <a href="productos.html?gender=niños" class="nav-link">NIÑOS</a>
             <a href="productos.html" class="nav-link">PRODUCTOS</a>
         </nav>
+        
         <div class="icons">
-            <div class="search-icon"><i class="fas fa-search"></i></div>
+            <div class="search-box">
+                <input type="text" id="nav-search-input" class="search-input" placeholder="Buscar modelo...">
+                <div class="search-icon" onclick="toggleSearch()">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+
             <div class="cart-icon-container" onclick="irAlCarrito()">
                 <i class="fas fa-shopping-bag"></i>
                 <span id="cart-counter" class="cart-badge">0</span>
@@ -163,9 +170,10 @@
         <div class="about-text">
             <h2>SOBRE JK URBAN</h2>
             <p>JK URBAN es tu destino principal para zapatillas premium y exclusivas. Nos especializamos en traer las colecciones más buscadas de las mejores marcas del mundo como Nike, Jordan, Adidas, y muchas más.</p>
-            <p>Con más de 500+ clientes satisfechos, nos comprometemos a ofrecer la mejor calidad, precios competitivos y un servicio al cliente excepcional. Cada par de zapatillas es seleccionado cuidadosamente para cumplir con nuestros altos estándares de calidad.</p>
-            <p>Somos más que una tienda, somos una comunidad de apasionados por las zapatillas. Queremos que cada compra sea una experiencia memorable.</p>
+            <p>Con más de 500+ clientes satisfechos, nos comprometemos a ofrecer la mejor calidad, precios competitivos y un servicio al cliente excepcional.</p>
+            <p>Somos más que una tienda, somos una comunidad de apasionados por las zapatillas.</p>
         </div>
+
         <div class="about-stats">
             <div class="stat">
                 <h3>500+</h3>
@@ -181,7 +189,7 @@
             </div>
             <div class="stat">
                 <h3>24/7</h3>
-                <p>Soporte por WhatsApp</p>
+                <p>Soporte WhatsApp</p>
             </div>
         </div>
     </div>
