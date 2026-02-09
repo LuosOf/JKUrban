@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos - JK URBAN Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <link rel="stylesheet" href="css/animaciones.css">
     <link rel="stylesheet" href="css/Carrito.css">
     <link rel="stylesheet" href="css/carrusel.css">
@@ -23,175 +24,193 @@
     <link rel="stylesheet" href="css/search.css">
     <link rel="stylesheet" href="css/tienda.css">
     <link rel="stylesheet" href="css/whatsapp.css">
-    <link rel="stylesheet" href="script.js">
+    
     <link rel="icon" type="image/png" href="favicon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
-<div class="top-bar">
-    <div class="top-bar-container">
-        
-        <div class="top-social">
-            <a href="https://www.facebook.com/profile.php?id=61587292062292"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-        </div>
 
-        <div class="top-promo">
-            APROVECHA LOS PRECIOS ESPECIALES EN ZAPATILLAS 
-        </div>
+<body class="fade-page">
 
-        <div class="top-contact">
-            <a href="https://wa.me/51945105822" target="_blank">
-                <i class="fab fa-whatsapp"></i> +51 945 105 822
-            </a>
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-social">
+                <a href="https://www.facebook.com/profile.php?id=61587292062292"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="top-promo">
+                APROVECHA LOS PRECIOS ESPECIALES EN ZAPATILLAS 
+            </div>
+            <div class="top-contact">
+                <a href="https://wa.me/51945105822" target="_blank">
+                    <i class="fab fa-whatsapp"></i> +51 945 105 822
+                </a>
+            </div>
         </div>
-
     </div>
-</div>
-<!-- HEADER / NAVBAR -->
-<header>
-    <div class="header-top">
-        <a href="index.html" class="logo">JK URBAN</a>
-        <nav class="navbar">
-            <a href="productos.html?gender=hombres" class="nav-link">HOMBRES</a>
-            <a href="productos.html?gender=mujeres" class="nav-link">MUJERES</a>
-            <a href="productos.html?gender=niños" class="nav-link">NIÑOS</a>
-            <a href="productos.html" class="nav-link">PRODUCTOS</a>
-        </nav>
-        
-        <div class="icons">
-            <div class="search-box">
-                <input type="text" id="nav-search-input" class="search-input" placeholder="Buscar...">
-                <div class="search-btn-icon" onclick="toggleSearch()">
-                    <i class="fas fa-search"></i>
+
+    <header>
+        <div class="header-top">
+            <a href="index.html" class="logo">JK URBAN</a>
+            <nav class="navbar">
+                <a href="productos.html?gender=hombres" class="nav-link">HOMBRES</a>
+                <a href="productos.html?gender=mujeres" class="nav-link">MUJERES</a>
+                <a href="productos.html?gender=niños" class="nav-link">NIÑOS</a>
+                <a href="productos.html" class="nav-link">PRODUCTOS</a>
+            </nav>
+            <div class="icons">
+                <div class="search-box">
+                    <input type="text" id="nav-search-input" class="search-input" placeholder="Buscar...">
+                    <div class="search-btn-icon" onclick="toggleSearch()"><i class="fas fa-search"></i></div>
+                </div>
+                <div class="cart-icon-container" onclick="irAlCarrito()">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span id="cart-counter" class="cart-badge">0</span>
                 </div>
             </div>
-
-            <div class="cart-icon-container" onclick="irAlCarrito()">
-                <i class="fas fa-shopping-bag"></i>
-                <span id="cart-counter" class="cart-badge">0</span>
-            </div>
         </div>
+    </header>
+
+    <div class="whatsapp-float" id="whatsapp-btn" onclick="abrirWhatsApp()">
+        <i class="fab fa-whatsapp"></i>
     </div>
-</header>
 
-<!-- BOTÓN WHATSAPP -->
-<div class="whatsapp-float" id="whatsapp-btn" onclick="abrirWhatsApp()">
-    <i class="fab fa-whatsapp"></i>
-</div>
-
-<!-- MODAL WHATSAPP -->
-<div class="whatsapp-modal" id="whatsapp-modal">
-    <div class="whatsapp-modal-content">
-        <div class="whatsapp-header">
-            <div class="whatsapp-header-info">
-                <div class="whatsapp-avatar"><i class="fab fa-whatsapp"></i></div>
-                <div>
-                    <h3>JK URBAN Store</h3>
-                    <p>En línea</p>
+    <div class="whatsapp-modal" id="whatsapp-modal">
+        <div class="whatsapp-modal-content">
+            <div class="whatsapp-header">
+                <div class="whatsapp-header-info">
+                    <div class="whatsapp-avatar"><i class="fab fa-whatsapp"></i></div>
+                    <div><h3>JK URBAN Store</h3><p>En línea</p></div>
                 </div>
+                <button class="close-modal" onclick="cerrarWhatsApp()"><i class="fas fa-times"></i></button>
             </div>
-            <button class="close-modal" onclick="cerrarWhatsApp()"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="whatsapp-messages" id="whatsapp-messages">
-            <div class="message bot-message">
-                <p>¡Hola! 👋 Bienvenido a JK URBAN. ¿En qué podemos ayudarte?</p>
+            <div class="whatsapp-messages" id="whatsapp-messages">
+                <div class="message bot-message"><p>¡Hola! 👋 Bienvenido a JK URBAN. ¿En qué podemos ayudarte?</p></div>
             </div>
-        </div>
-        <div class="whatsapp-input">
-            <input type="text" placeholder="Escribe tu mensaje..." id="whatsapp-input" onkeypress="if(event.key==='Enter') enviarMensajeWhatsApp()">
-            <button onclick="enviarMensajeWhatsApp()"><i class="fas fa-paper-plane"></i></button>
+            <div class="whatsapp-input">
+                <input type="text" placeholder="Escribe tu mensaje..." id="whatsapp-input" onkeypress="if(event.key==='Enter') enviarMensajeWhatsApp()">
+                <button onclick="enviarMensajeWhatsApp()"><i class="fas fa-paper-plane"></i></button>
+            </div>
         </div>
     </div>
-</div>
 
-
-<!-- CONTENIDO PRINCIPAL -->
-<div class="products-page">
-    <aside class="filters-sidebar">
-        <h2 style="font-size: 1.2rem; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 900; color: #1a1a1a;">Filtros</h2>
+    <div class="products-page">
         
-        <div class="filter-group">
-            <h3>Tipo</h3>
-            <div id="type-filter" class="filter-options"></div>
-        </div>
-        
-        <div class="filter-group">
-            <h3>Género</h3>
-            <div id="gender-filter" class="filter-options"></div>
-        </div>
-
-        <div class="filter-group">
-            <h3>Estilo</h3>
-            <div id="style-filter" class="filter-options"></div>
-        </div>
-
-        <div class="filter-group">
-            <h3>Talla</h3>
-            <select id="size-filter" class="size-select" onchange="applyFilters()">
-                <option value="">Talla</option>
-                <option value="36">36</option>
-                <option value="37">37</option>
-                <option value="38">38</option>
-                <option value="39">39</option>
-                <option value="40">40</option>
-                <option value="41">41</option>
-                <option value="42">42</option>
-                <option value="43">43</option>
-                <option value="44">44</option>
-                <option value="45">45</option>
-            </select>
-        </div>
-
-        <div class="filter-group">
-            <h3>Marca</h3>
-            <div id="brands-filter" class="filter-options"></div>
-        </div>
-
-        <button class="btn-primary" onclick="clearAllFilters()" style="width: 100%; margin-top: 2rem;">
-            Limpiar Filtros
+        <button class="btn-filter-toggle" id="open-filters-btn">
+            <i class="fas fa-filter"></i> FILTRAR Y ORDENAR
         </button>
-    </aside>
 
-    <main>
-        <div class="products-header">
-            <h1 class="section-title" style="margin: 0;">Nuestros Productos</h1>
-            <p id="product-count" class="product-count">Mostrando productos</p>
-        </div>
-        <div class="grid" id="products-grid">
+        <aside class="filters-sidebar" id="filters-sidebar">
+            
+            <div class="filter-header-mobile">
+                <span>FILTROS</span>
+                <button class="close-filters-btn" id="close-filters-btn">&times;</button>
             </div>
-        
-        <div class="pagination" id="pagination-container" style="margin-top: 3rem;">
+
+            <h2 class="desktop-filter-title">Filtros</h2>
+            
+            <div class="filter-group">
+                <h3>Tipo</h3>
+                <div id="type-filter" class="filter-options"></div>
             </div>
-    </main>
-</div>
+            <div class="filter-group">
+                <h3>Género</h3>
+                <div id="gender-filter" class="filter-options"></div>
+            </div>
+            <div class="filter-group">
+                <h3>Estilo</h3>
+                <div id="style-filter" class="filter-options"></div>
+            </div>
+            <div class="filter-group">
+                <h3>Talla</h3>
+                <div class="size-grid-container">
+                    <button class="size-btn">36</button>
+                    <button class="size-btn">36.5</button>
+                    <button class="size-btn">37.5</button>
+                    <button class="size-btn">38</button>
+                    <button class="size-btn">38.5</button>
+                    <button class="size-btn">39</button>
+                    <button class="size-btn">40</button>
+                    <button class="size-btn">40.5</button>
+                    <button class="size-btn">41</button>
+                    <button class="size-btn">42</button>
+                    <button class="size-btn">42.5</button>
+                    <button class="size-btn">43</button>
+                    <button class="size-btn">44</button>
+                    <button class="size-btn">44.5</button>
+                    <button class="size-btn">45</button>
+                    <button class="size-btn">46</button>
+                </div>
+            </div>
+            <div class="filter-group">
+                <h3>Marca</h3>
+                <div id="brands-filter" class="filter-options"></div>
+            </div>
 
-<!-- FOOTER -->
-<footer class="footer">
-    <div class="footer-content">
-        <div class="footer-section">
-            <h4>JK URBAN</h4>
-            <p>Tu tienda de zapatillas premium en línea.</p>
-        </div>
-        <div class="footer-section">
-            <h4>ENLACES</h4>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="productos.html">Productos</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>CONTACTO</h4>
-            <p>📱 +51 999 123 456</p>
-            <p>📧 info@jkurban.com</p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2024 JK URBAN. Todos los derechos reservados.</p>
-    </div>
-</footer>
+            <button class="btn-filter-clean" onclick="clearAllFilters()">
+                Limpiar Filtros
+            </button>
+        </aside>
 
-<script src="script.js"></script>
+        <main>
+            <div class="products-header">
+                <h1 class="section-title">Nuestros Productos</h1>
+                <p id="product-count" class="product-count">Mostrando productos</p>
+            </div>
+            
+            <div class="grid" id="products-grid">
+                </div>
+            
+            <div class="pagination" id="pagination-container">
+                </div>
+        </main>
+    </div>
+
+    <div class="filter-overlay" id="filter-overlay"></div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>JK URBAN</h4>
+                <p>Tu tienda de zapatillas premium en línea.</p>
+            </div>
+            <div class="footer-section">
+                <h4>ENLACES</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>CONTACTO</h4>
+                <p>📱 +51 999 123 456</p>
+                <p>📧 info@jkurban.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 JK URBAN. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // LÓGICA PARA EL MENÚ DE FILTROS EN CELULAR
+        document.addEventListener("DOMContentLoaded", function() {
+            const openBtn = document.getElementById("open-filters-btn");
+            const closeBtn = document.getElementById("close-filters-btn");
+            const sidebar = document.getElementById("filters-sidebar");
+            const overlay = document.getElementById("filter-overlay");
+
+            function toggleFilters() {
+                sidebar.classList.toggle("active");
+                overlay.classList.toggle("active");
+                // Evitar scroll en el fondo cuando el menú está abierto
+                document.body.style.overflow = sidebar.classList.contains("active") ? "hidden" : "auto";
+            }
+
+            if(openBtn) openBtn.addEventListener("click", toggleFilters);
+            if(closeBtn) closeBtn.addEventListener("click", toggleFilters);
+            if(overlay) overlay.addEventListener("click", toggleFilters);
+        });
+    </script>
 </body>
 </html>

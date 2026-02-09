@@ -1,27 +1,318 @@
-.product-detail-container { max-width: 1200px; margin: 2rem auto; padding: 0 20px; }
-.detail-page-title { text-align: center; font-size: 2rem; margin-bottom: 2rem; font-weight: 900; text-transform: uppercase; }
+/* ============================================
+   ESTILOS DE LA PÁGINA DE DETALLE (PREMIUM)
+   ============================================ */
 
-.product-main-flex { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+/* Contenedor Principal */
+.product-detail-container {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 5%;
+}
 
-.main-image-display { height: 400px; display: flex; align-items: center; justify-content: center; background: #f9f9f9; border-radius: 8px; margin-bottom: 15px; }
-.main-image-display img { max-width: 90%; max-height: 90%; object-fit: contain; mix-blend-mode: multiply; }
-.thumbnails-grid { display: flex; gap: 10px; justify-content: center; }
-.thumb-img { width: 70px; height: 70px; border: 1px solid #eee; padding: 5px; cursor: pointer; border-radius: 6px; }
-.thumb-img.active { border-color: #000; }
+.detail-page-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #111;
+    letter-spacing: -0.5px;
+}
 
-.product-info-panel h1 { font-size: 2rem; line-height: 1.2; margin-bottom: 10px; }
-.detail-price { font-size: 2.2rem; font-weight: 900; color: var(--accent-red); margin: 15px 0; }
-.size-options { display: flex; gap: 10px; margin: 15px 0; flex-wrap: wrap; }
-.size-btn { width: 45px; height: 45px; border: 1px solid #ddd; background: #fff; font-weight: 700; cursor: pointer; }
-.size-btn.selected { background: #000; color: #fff; border-color: #000; }
+/* --- GRID PRINCIPAL (IMAGEN VS INFO) --- */
+.product-main-flex {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* Imagen un poco más ancha */
+    gap: 60px; /* Buen espacio entre columnas */
+    align-items: start;
+    background: transparent; /* Sin fondo de tarjeta */
+    box-shadow: none; /* Sin sombras para look limpio */
+}
 
-.action-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
-.btn-cart-main { padding: 15px; background: #ddd; color: #666; font-weight: 800; border-radius: 6px; cursor: not-allowed; }
-.btn-cart-main.ready { background: #000; color: #fff; cursor: pointer; }
-.btn-whatsapp-direct { padding: 15px; background: #25D366; color: #fff; font-weight: 800; border-radius: 6px; display: flex; justify-content: center; gap: 10px; }
+/* --- SECCIÓN VISUAL (IZQUIERDA) --- */
+.product-visuals {
+    position: sticky;
+    top: 120px;
+}
 
-/* Tabla Tallas */
-.size-guide-section { margin-top: 40px; background: #fff; padding: 30px; border-radius: 12px; }
-.golden-table { width: 100%; border-collapse: collapse; text-align: center; }
-.golden-table th { background: #f0f0f0; padding: 10px; }
-.golden-table td { border-bottom: 1px solid #eee; padding: 10px; }
+.main-image-display {
+    height: 500px; /* Imagen bien grande */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9f9f9; /* Fondo gris muy suave */
+    border-radius: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.main-image-display img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    transition: transform 0.3s ease;
+}
+
+.main-image-display:hover img {
+    transform: scale(1.05);
+}
+
+.thumbnails-grid {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.thumb-img {
+    width: 80px;
+    height: 80px;
+    border: 2px solid transparent;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 12px;
+    background: #f9f9f9;
+    transition: all 0.2s;
+}
+
+.thumb-img.active, .thumb-img:hover {
+    border-color: #111;
+}
+
+/* --- SECCIÓN INFO (DERECHA) --- */
+.product-info-panel {
+    padding-top: 20px;
+}
+
+/* Etiqueta "OFERTA" */
+.tag-alt {
+    display: inline-block;
+    color: #2e7d32; /* Verde elegante */
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+/* Título del Producto */
+.product-info-panel h1 {
+    font-size: 2.8rem; /* Título MUY GRANDE */
+    line-height: 1;
+    margin-bottom: 15px;
+    color: #111;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.brand-label {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* PRECIO GIGANTE */
+.detail-price {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #e62222; /* Rojo intenso */
+    margin: 20px 0 30px 0;
+    display: block;
+}
+
+/* Descripción */
+.product-info-panel p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Selector de Talla */
+.size-selector-box {
+    margin-bottom: 30px;
+}
+
+.size-selector-box span {
+    display: block;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.size-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.size-btn {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s;
+    color: #333;
+}
+
+.size-btn:hover {
+    border-color: #111;
+}
+
+.size-btn.selected {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+    transform: scale(1.1);
+}
+
+/* Botones de Acción */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-cart-main {
+    padding: 18px;
+    background: #e0e0e0;
+    color: #888;
+    font-weight: 900;
+    border: none;
+    border-radius: 8px;
+    cursor: not-allowed;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.btn-cart-main.ready {
+    background: #111;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.btn-cart-main.ready:hover {
+    transform: translateY(-2px);
+    background: #333;
+}
+
+.btn-whatsapp-direct {
+    padding: 18px;
+    background: #25D366;
+    color: #fff;
+    font-weight: 900;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.btn-whatsapp-direct:hover {
+    background: #1ebc57;
+}
+
+/* Beneficios (Iconos abajo) */
+.trust-icons {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.trust-icons p {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.trust-icons i {
+    color: #111;
+    font-size: 1.1rem;
+}
+
+/* --- TABLA DE TALLAS --- */
+.size-guide-section {
+    margin-top: 80px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid #eee;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.guide-box {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.guide-info-text { flex: 1; text-align: center; }
+.guide-info-text img { max-width: 200px; margin-bottom: 15px; }
+
+.table-responsive { flex: 1.5; }
+
+.golden-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.golden-table th {
+    background: #111;
+    color: #fff;
+    padding: 15px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.golden-table td {
+    border: 1px solid #eee;
+    padding: 12px;
+    color: #555;
+    font-weight: 600;
+}
+
+.golden-table tr:nth-child(even) { background-color: #f9f9f9; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .product-main-flex {
+        grid-template-columns: 1fr; /* Una columna en móvil */
+        gap: 30px;
+    }
+
+    .main-image-display { height: 300px; }
+
+    .product-info-panel h1 { font-size: 2rem; }
+    .detail-price { font-size: 2.2rem; }
+
+    .guide-box { flex-direction: column; }
+    
+    .product-visuals { position: relative; top: 0; }
+}

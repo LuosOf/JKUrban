@@ -1,10 +1,18 @@
 // ============================================
 // CONFIGURACIÓN Y VARIABLES GLOBALES
 // ============================================
+// ============================================
+// CONFIGURACIÓN Y VARIABLES GLOBALES
+// ============================================
 const WHATSAPP_NUMBER = "945105822"; 
 let cart = [];
-let currentPage = 1;
-const productsPerPage = 12; 
+
+// --- CORRECCIÓN: Leer la página desde la URL para no perder la posición ---
+const urlParams = new URLSearchParams(window.location.search);
+// Si la URL dice ?page=3, usa 3. Si no dice nada, usa 1.
+let currentPage = parseInt(urlParams.get('page')) || 1; 
+
+const productsPerPage = 12;
 
 // ============================================
 // BASE DE DATOS DE PRODUCTOS
@@ -13,23 +21,24 @@ const productsPerPage = 12;
 // BASE DE DATOS DE PRODUCTOS (NOMBRES EN MAYÚSCULAS)
 // ============================================
 const productsDB = [
-    { id: 12, name: "NIKE DUNK LOW RAYSSA LEAL", price: 339, category: "hombres", brand: "Nike", type: "zapatillas", style: "urbanas", img: "https://images.stockx.com/images/Nike-SB-Dunk-Low-Rayssa-Leal-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1738193358", description: "Estilo skate exclusivo de Rayssa Leal.", tag: "nuevo" },
-    { id: 13, name: "NIKE SHOX METALLIC SILVER", price: 339, category: "hombres", brand: "Nike", type: "zapatillas", style: "urbanas", img: "https://goldenstoreperu.com/wp-content/uploads/2025/10/6-HQ4049-001-NIKE-SHOX-METALLIC-SILVER.png", description: "El regreso de los resortes clásicos." },
-    { id: 14, name: "NIKE SHOX BLACK UNIVERSITY", price: 339, category: "hombres", brand: "Nike", type: "zapatillas", style: "urbanas", img: "https://images.stockx.com/images/Nike-Shox-TL-Black-University-Red-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1738193358", description: "Colores universitarios agresivos." },
+    { id: 12, name: "NIKE DUNK LOW RAYSSA LEAL", price: 339, category: "hombres", brand: "Nike", type: "zapatillas", style: "urbanas", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2025/10/76-FZ5251-001-NIKE-DUNK-LOW-RAYSSA-LEAL.png?fit=1024%2C1024&ssl=1", description: "Estilo skate exclusivo de Rayssa Leal.", tag: "nuevo" },
+    { id: 13, name: "NIKE SHOX METALLIC SILVER", price: 339, category: "hombres", brand: "Nike", type: "zapatillas", style: "urbanas", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2025/10/6-HQ4049-001-NIKE-SHOX-METALLIC-SILVER.png?fit=1024%2C1024&ssl=1", description: "El regreso de los resortes clásicos." },
+    { id: 14, name: "NIKE SHOX BLACK UNIVERSITY", price: 339, category: "hombres", brand: "Nike", type: "zapatillas", style: "urbanas", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2025/10/16-CN0151-006-NIKE-SHOX-BLACK-UNIVERSITY.png?fit=1024%2C1024&ssl=1", description: "Colores universitarios agresivos." },
 
     // --- ASICS KAYANO 14 ---
-    { id: 15, name: "ASICS KAYANO 14 METALLIC PLUM", price: 339, category: "hombres", brand: "Asics", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2025/10/111-HM6803-101-NIKE-VOMERO-18-COCONUT-MILK.png", description: "Retro running con acabados metálicos." },
+    { id: 15, name: "ASICS KAYANO 14 METALLIC PLUM", price: 339, category: "hombres", brand: "Asics", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2025/10/21-20767916-ASICS-KAYANO-14-METALLIC-PLUM.png?fit=1024%2C1024&ssl=1", description: "Retro running con acabados metálicos." },
     { id: 16, name: "ASICS KAYANO 14 METALLIC GRAY", price: 339, category: "hombres", brand: "Asics", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2025/10/136-HM6803-103-NIKE-VOMERO-18-ROAD-RUNNING.png", description: "Estilo técnico y futurista." },
     { id: 17, name: "ASICS KAYANO 14 TRIPLE BLACK", price: 339, category: "hombres", brand: "Asics", type: "zapatillas", style: "urbanas", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2025/10/141-HM5907-009-NIKE-VOMERO-18-BLACK-WHITE.png", description: "Totalmente negro, elegancia discreta." },
     { id: 18, name: "ASICS KAYANO 14 WHITE TUNA BLUE", price: 339, category: "hombres", brand: "Asics", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2025/10/156-HM6803-401-NIKE-VOMERO-18-BUE-VOID.png", description: "Combinación fresca y deportiva." },
-    { id: 36, name: "ASICS KAYANO 14 SILVER BLACK", price: 359, category: "hombres", brand: "Asics", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2024/01/91-DH6927-111-AIR-JORDAN-4-RETRO-MILITARY-BLACK.png", description: "El colorway más buscado de la temporada." },
+    { id: 36, name: "ASICS KAYANO 14 SILVER BLACK", price: 359, category: "hombres", brand: "Asics", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2025/10/41-20767880-ASICS-KAYANO-14-SILVER-BLACK.png?fit=1024%2C1024&ssl=1", description: "El colorway más buscado de la temporada." },
 
     // --- NIKE METCON 6 ---
-    { id: 37, name: "NIKE FREE METCON 6 WHITE", price: 359, category: "hombres", brand: "Nike", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2023/12/106-CT8527-100-AIR-JORDAN-4-RETRO-WHITE-OREO.png", description: "Estabilidad máxima para entrenamiento." },
-    { id: 40, name: "NIKE FREE METCON 6 BLACK", price: 349, category: "hombres", brand: "Nike", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2023/12/101-DM7866-162-TRAVIS-SCOTT-X-AIR-JORDAN-1-LOW-REVERSE-MOCHA.png", description: "Resistencia y flexibilidad." },
-    { id: 43, name: "NIKE FREE METCON 6 ROYAL BLUE", price: 329, category: "hombres", brand: "Nike", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2023/12/141-MR530SG-NEW-BALANCE-530-WHITE-GREY-NAVY.png", description: "Color vibrante para el gimnasio." },
-    { id: 44, name: "NIKE FREE METCON 6 TRIPLE BLACK", price: 309, category: "hombres", brand: "Nike", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2024/01/1-ID2529-ADIDAS-CAMPUS-LIGHT-BAD-BUNNY.png", description: "Diseño stealth para entrenar." },
-    { id: 1, name: "NIKE FREE METCON 6 GAME ROYAL", price: 450, category: "hombres", brand: "Nike", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2021/07/26-CN8490-003-NIKE-AIR-MAX-90-BLACK-WHITE.png", description: "Alto rendimiento funcional." },
+    { id: 37, name: "NIKE FREE METCON 6 WHITE", price: 359, category: "hombres", brand: "Nike", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2025/10/46-FJ7127-101-NIKE-FREE-METCON-6-WHITE.png?fit=1024%2C1024&ssl=1", description: "Estabilidad máxima para entrenamiento." },
+    { id: 40, name: "NIKE FREE METCON 6 BLACK", price: 349, category: "hombres", brand: "Nike", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2025/10/51-FJ7127-001-NIKE-FREE-METCON-6-BLACK.png?fit=1024%2C1024&ssl=1", description: "Resistencia y flexibilidad." },
+    { id: 41, name: "NIKE FREE METCON 6 BLACK", price: 349, category: "hombres", brand: "Nike", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2025/10/61-FJ7126-003-NIKE-FREE-METCON-6-TRIPLE-BLACK.png?fit=1024%2C1024&ssl=1", description: "Resistencia y flexibilidad." },
+    { id: 43, name: "NIKE FREE METCON 6 ROYAL BLUE", price: 329, category: "hombres", brand: "Nike", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2025/10/56-HM3754-400-NIKE-FREE-METCON-6-ROYAL-BLUE.png?fit=1024%2C1024&ssl=1", description: "Color vibrante para el gimnasio." },
+    { id: 44, name: "NIKE FREE METCON 6 TRIPLE BLACK", price: 309, category: "hombres", brand: "Nike", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2025/10/61-FJ7126-003-NIKE-FREE-METCON-6-TRIPLE-BLACK.png?fit=1024%2C1024&ssl=1", description: "Diseño stealth para entrenar." },
+    { id: 1, name: "NIKE FREE METCON 6 GAME ROYAL", price: 450, category: "hombres", brand: "Nike", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2025/10/66-FJ7127-102-NIKE-FREE-METCON-6-GAME-ROYAL.png?fit=1024%2C1024&ssl=1", description: "Alto rendimiento funcional." },
 
     // --- NIKE AIR FORCE 1 (NUEVOS) ---
     { id: 50, name: "NIKE AIR FORCE 1 BLACK STARDUST", price: 329, category: "hombres", brand: "Nike", type: "zapatillas", style: "urbanas", img: "https://via.placeholder.com/300x300?text=AF1+Stardust", description: "Un toque de polvo estelar en el clásico." },
@@ -58,7 +67,7 @@ const productsDB = [
     { id: 69, name: "NIKE AIR MORE UPTEMPO LOW HYPER ROYAL", price: 369, category: "hombres", brand: "Nike", type: "zapatillas", style: "urbanas", img: "https://via.placeholder.com/300x300?text=Uptempo+Royal", description: "Azul real impactante." },
     { id: 70, name: "NIKE PEGASUS TRAIL 5 ARMORY NAVY", price: 349, category: "mujeres", brand: "Nike", type: "zapatillas", style: "deportivos", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVm-GSH0Q_YdmS7mp_JHyVEVBG_EtfNapKtg&s", description: "Domina los senderos." },
     { id: 71, name: "NIKE ZEGAMA TRAIL 2 WHITE RED", price: 359, category: "mujeres", brand: "Nike", type: "zapatillas", style: "deportivos", img: "https://imperiumstore.pe/wp-content/uploads/2025/06/126.png", description: "Tracción superior en montaña." },
-    { id: 72, name: "NIKE ZEGAMA TRAIL 2 DAYBREAK", price: 359, category: "mujeres", brand: "Nike", type: "zapatillas", style: "deportivos", img: "https://shop.skinnyraven.com/images/1575/131_377898_1713305025707.png", description: "Colores inspirados en el amanecer." },
+    { id: 72, name: "NIKE ZEGAMA TRAIL 2 DAYBREAK", price: 359, category: "mujeres", brand: "Nike", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2025/06/116.png?fit=1024%2C1024&ssl=1", description: "Colores inspirados en el amanecer." },
 
     // --- NIKE RUNNING & TRAIL (INFINITY / PEGASUS / ZEGAMA) ---
     { id: 73, name: "NIKE INFINITY-RN WHITE ORANGE", price: 339, category: "hombres", brand: "Nike", type: "zapatillas", style: "deportivos", img: "https://via.placeholder.com/300x300?text=Infinity+Orange", description: "Soporte y amortiguación para cada kilómetro." },
@@ -157,7 +166,7 @@ const productsDB = [
     { id: 154, name: "AIR JORDAN 1 TRAVIS SCOTT DARK MOCHA", price: 389, category: "hombres", brand: "Jordan", type: "zapatillas", style: "urbanas", img: "https://via.placeholder.com/300x300?text=DarkMocha", description: "Tonos tierra esenciales." },
     { id: 155, name: "AIR JORDAN RETRO 3 UNC", price: 369, category: "hombres", brand: "Jordan", type: "zapatillas", style: "urbanas", img: "https://via.placeholder.com/300x300?text=AJ3+UNC", description: "Azul universitario clásico." },
     { id: 156, name: "AIR JORDAN RETRO 13 BLACK CAT", price: 359, category: "hombres", brand: "Jordan", type: "zapatillas", style: "urbanas", img: "https://via.placeholder.com/300x300?text=AJ13+BlackCat", description: "Inspirado en la pantera." },
-    { id: 157, name: "AIR JORDAN RETRO 4 MILITARY BLACKK", price: 369, category: "mujeres", brand: "Jordan", type: "zapatillas", style: "urbanas", img: "https://cdn-images.farfetch-contents.com/18/46/38/53/18463853_40222049_1000.jpg", description: "Bloque de color limpio." },
+    { id: 157, name: "AIR JORDAN RETRO 4 MILITARY BLACKK", price: 369, category: "mujeres", brand: "Jordan", type: "zapatillas", style: "urbanas", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2022/11/Otros-11.png?fit=1024%2C1024&ssl=1", description: "Bloque de color limpio." },
     { id: 158, name: "AIR JORDAN 1 TRAVIS SCOTT REVERSE MOCHA", price: 389, category: "hombres", brand: "Jordan", type: "zapatillas", style: "urbanas", img: "https://via.placeholder.com/300x300?text=ReverseMocha", description: "Colores invertidos exclusivos." },
     { id: 159, name: "AIR JORDAN RETRO 3 BLACK CEMENT", price: 369, category: "hombres", brand: "Jordan", type: "zapatillas", style: "urbanas", img: "https://via.placeholder.com/300x300?text=BlackCement", description: "Uno de los mejores de la historia." },
     { id: 160, name: "AIR JORDAN RETRO 4 WHITE OREO", price: 349, category: "mujeres", brand: "Jordan", type: "zapatillas", style: "urbanas", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2022/02/r-2.png?fit=1024%2C1024&ssl=1", description: "Blanco moteado premium." },
@@ -170,7 +179,7 @@ const productsDB = [
     // --- NEW BALANCE, ADIDAS, LOUIS VUITTON, DUNK, SHOX R4 ---
     { id: 166, name: "NEW BALANCE 1906 SILVER METALLIC", price: 329, category: "hombres", brand: "New Balance", type: "zapatillas", style: "deportivos", img: "https://via.placeholder.com/300x300?text=NB1906+Silver", description: "Estilo técnico 2000s." },
     { id: 167, name: "NEW BALANCE 1906 TRIPLE BLACK", price: 329, category: "hombres", brand: "New Balance", type: "zapatillas", style: "deportivos", img: "https://via.placeholder.com/300x300?text=NB1906+Black", description: "Protección y estilo oscuro." },
-    { id: 168, name: "NEW BALANCE 530 WHITE GREY NAVY", price: 319, category: "mujeres", brand: "New Balance", type: "zapatillas", style: "deportivos", img: "https://dripstore.pe/cdn/shop/files/Diseno_sin_titulo_27.png?v=1733287901", description: "El papá shoe por excelencia." },
+    { id: 168, name: "NEW BALANCE 530 WHITE GREY NAVY", price: 319, category: "mujeres", brand: "New Balance", type: "zapatillas", style: "deportivos", img: "https://i0.wp.com/goldenstoreperu.com/wp-content/uploads/2021/09/19.png?fit=1024%2C1024&ssl=1", description: "El papá shoe por excelencia." },
     { id: 169, name: "NIKE DUNK LOW JARRITOS", price: 349, category: "hombres", brand: "Nike", type: "zapatillas", style: "urbanas", img: "https://via.placeholder.com/300x300?text=Jarritos", description: "Colaboración con la bebida mexicana." },
     { id: 170, name: "NIKE DUNK LOW RETRO 'PANDA'", price: 329, category: "hombres", brand: "Nike", type: "zapatillas", style: "urbanas", img: "https://via.placeholder.com/300x300?text=Dunk+Panda", description: "El Dunk más popular." },
     { id: 171, name: "NIKE DUNK LOW GREY FOG", price: 329, category: "hombres", brand: "Nike", type: "zapatillas", style: "urbanas", img: "https://via.placeholder.com/300x300?text=Dunk+Grey", description: "Gris niebla versátil." },
@@ -521,6 +530,13 @@ function changePage(page) {
     // Actualizamos la variable global
     currentPage = page;
     
+    // --- NUEVO: Guardar la página en la URL (Historial del navegador) ---
+    // Esto permite que al dar "Atrás", el navegador recuerde dónde estabas
+    const url = new URL(window.location);
+    url.searchParams.set('page', page);
+    window.history.pushState({}, '', url);
+    // -------------------------------------------------------------------
+
     // Recargamos los filtros para mostrar los nuevos productos
     applyFilters();
     
@@ -597,6 +613,7 @@ function loadProductDetailPage() {
                 Marca: ${currentProduct.brand} | Modelo: ${currentProduct.style || 'Urbano'}
             </div>
             <p class="detail-price">S/ ${currentProduct.price.toFixed(2)}</p>
+            
             
             <p style="color: #555; line-height: 1.6; margin-bottom: 20px;">
                 ${currentProduct.description || 'Las mejores zapatillas con estilo las encuentras en JK URBAN. Calidad premium y comodidad garantizada para tu día a día.'}
