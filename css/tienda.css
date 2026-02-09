@@ -123,3 +123,121 @@
     /* En celulares muy pequeños, las stats una debajo de otra */
     .about-stats { grid-template-columns: 1fr; gap: 15px; }
 }
+/* =======================================================
+   DISEÑO PREMIUM: SECCIÓN OFERTAS ESPECIALES
+   ======================================================= */
+
+/* Grid contenedor (Asegura que estén alineados) */
+#offers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* Tarjeta de Oferta */
+.offer-card {
+    background: #ffffff;
+    border-radius: 12px; /* Bordes redondeados suaves */
+    padding: 20px;
+    position: relative; /* Para posicionar el badge */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    text-align: left; /* Alineado a la izquierda para look moderno */
+}
+
+/* Efecto Hover (Elevación) */
+.offer-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+/* Badge de Descuento (-20%) */
+.offer-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #000; /* Negro elegante en lugar de gris */
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 6px 10px;
+    border-radius: 4px;
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Imagen del Producto */
+.offer-card .carousel-img-container {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.offer-card img {
+    width: 95%;
+    height: 95%;
+    object-fit: contain;
+    mix-blend-mode: multiply; /* Fusión perfecta con el fondo */
+    transition: transform 0.4s ease;
+}
+
+.offer-card:hover img {
+    transform: scale(1.08) rotate(-2deg); /* Pequeño giro dinámico al hover */
+}
+
+/* Texto "OFERTA LIMITADA" (Ahora más sutil) */
+.offer-card .tag-bestseller {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #e62222 !important; /* Rojo marca */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    display: inline-block;
+    background: rgba(230, 34, 34, 0.08); /* Fondo rojo muy suave */
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* Título del Producto */
+.offer-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    line-height: 1.3;
+    height: 40px; /* Altura fija para alineación */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* Contenedor de Precios */
+.prices-wrapper {
+    display: flex;
+    align-items: baseline; /* Alinea los números en la base */
+    gap: 10px;
+    margin-top: 5px;
+}
+
+/* Precio Antiguo (Tachado) */
+.old-price {
+    font-size: 0.9rem;
+    color: #888;
+    text-decoration: line-through;
+    font-weight: 500;
+}
+
+/* Precio Nuevo (Grande) */
+.offer-card .carousel-price {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #111; /* Negro fuerte */
+}

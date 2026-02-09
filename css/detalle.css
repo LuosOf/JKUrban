@@ -30,32 +30,44 @@
 }
 
 /* --- SECCIÓN VISUAL (IZQUIERDA) --- */
+/* --- COLUMNA IZQUIERDA: IMAGEN --- */
 .product-visuals {
     position: sticky;
-    top: 120px;
+    top: 50px;
 }
 
 .main-image-display {
-    height: 500px; /* Imagen bien grande */
+    height: 650px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f9f9f9; /* Fondo gris muy suave */
-    border-radius: 20px;
+    /* ASEGURAMOS FONDO BLANCO PURO */
+    background-color: #ffffff !important;
     margin-bottom: 20px;
-    overflow: hidden;
+    
+    /* --- FUERZA BRUTA PARA QUITAR BORDES --- */
+    border: none !important;       /* Quita bordes sólidos */
+    outline: none !important;      /* Quita líneas de contorno */
+    box-shadow: none !important;   /* Quita sombras que parecen bordes */
+    /* --------------------------------------- */
 }
 
 .main-image-display img {
-    max-width: 90%;
-    max-height: 90%;
+    width: 90%;
+    height: 90%;
     object-fit: contain;
+    /* Aseguramos que la imagen tampoco tenga borde */
+    border: none !important; 
+    
+    /* EL TRUCO CLAVE: Multiplicar */
     mix-blend-mode: multiply;
-    transition: transform 0.3s ease;
+    filter: contrast(1.02);
+    transition: transform 0.5s ease;
 }
 
 .main-image-display:hover img {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 .thumbnails-grid {
